@@ -10,12 +10,12 @@ export default () => (
     <div className="contacts">
       <div>Contatos:</div>
       <div>
-        <a href="tel:51 98910-8976">
+        <a target="_blank" href="https://api.whatsapp.com/send?phone=5551989108976&text=Oi%2C%20gostaria%20de%20agendar%20servi%C3%A7o%20de%3A">
           <img src="/whatsicon.webp" />
           51 98910-8976
         </a>
         <span>&</span>
-        <a href="tel:51 98207-3632">
+        <a target="_blank" href="https://api.whatsapp.com/send?phone=5551982073632&text=Oi%2C%20gostaria%20de%20agendar%20servi%C3%A7o%20de%3A">
           <img src="/whatsicon.webp" />
           51 98207-3632
         </a>

@@ -20,11 +20,20 @@ const Container = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: black;
-  background-image: url(/boca.webp);
   min-height: 600px;
-  background-position: center center;
-  background-size: cover;
+  position: relative;
+  background-color: black;
+  &:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background-image: url(/boca.webp);
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.6;
+  }
   div {
     flex-grow: 1;
     display: flex;

@@ -2,11 +2,15 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 export default () => {
+  let gallery: any
+  useEffect(() => {
+    gallery = new GallerySlider('#galeria .images')
+  }, [])
   return (
     <Container id="galeria" className="DefaultSection">
       <h2>Galeria</h2>
 
-      <div className="images">
+      <div className="images" onMouseEnter={() => gallery.stop()} onMouseLeave={() => gallery.start()}>
         <a
           target="_blank"
           href="https://www.instagram.com/p/B-pQw58HGFh/?utm_source=ig_web_button_share_sheet"
@@ -23,7 +27,10 @@ export default () => {
           />
         </a>
 
-        <a href="https://www.instagram.com/p/B0TrgseHyNs/?utm_source=ig_web_copy_link" data-text="Francesinha diferenciada 💅🏼✨" target="_blank">
+        <a
+          href="https://www.instagram.com/p/B0TrgseHyNs/?utm_source=ig_web_copy_link"
+          data-text="Francesinha diferenciada 💅🏼✨"
+          target="_blank">
           <img
             alt="Photo by Gabriela Almeida S in Santo Ofício Cabelo &amp; Arte with @santooficiocabeloearte. A imagem pode conter: uma ou mais pessoas"
             className="FFVAD"
@@ -33,7 +40,10 @@ export default () => {
           />
         </a>
 
-        <a href="https://www.instagram.com/p/B-XkID7HJoB/?utm_source=ig_web_button_share_sheet" target="_blank" data-text="✂️ Mariene ✂️ Porque a vida é muito curta para ter cabelo chato.">
+        <a
+          href="https://www.instagram.com/p/B-XkID7HJoB/?utm_source=ig_web_button_share_sheet"
+          target="_blank"
+          data-text="✂️ Mariene ✂️ Porque a vida é muito curta para ter cabelo chato.">
           <img
             alt="Photo shared by 🍀Thaynara Oliveira 🍀 on March 30, 2020 tagging @marienehubner_. A imagem pode conter: 2 pessoas, close-up"
             className="FFVAD"
@@ -43,7 +53,10 @@ export default () => {
           />
         </a>
 
-        <a href="https://www.instagram.com/p/B8eiwOknWYN/?utm_source=ig_web_copy_link" target="_blank" data-text="✨ Lash Lifting ✨">
+        <a
+          href="https://www.instagram.com/p/B8eiwOknWYN/?utm_source=ig_web_copy_link"
+          target="_blank"
+          data-text="✨ Lash Lifting ✨">
           <img
             alt="Photo by Gabriela Almeida S in Santo Ofício Cabelo &amp; Arte with @lilaczar. A imagem pode conter: 1 pessoa, close-up"
             className="FFVAD"
@@ -53,7 +66,10 @@ export default () => {
           />
         </a>
 
-        <a href="https://www.instagram.com/p/B1Moeu1Bxb-/?utm_source=ig_web_copy_link" target="_blank" data-text="Uma make maravilhosa pra uma mulher MARAVILHOSA @carolkauss 😍✨♥️">
+        <a
+          href="https://www.instagram.com/p/B1Moeu1Bxb-/?utm_source=ig_web_copy_link"
+          target="_blank"
+          data-text="Uma make maravilhosa pra uma mulher MARAVILHOSA @carolkauss 😍✨♥️">
           <img
             alt="Photo shared by Gabriela Almeida S on August 15, 2019 tagging @carolkauss. A imagem pode conter: uma ou mais pessoas e close-up"
             className="FFVAD"
@@ -77,9 +93,23 @@ const Container = styled.section`
     display: flex;
     max-width: 1200px;
     overflow-x: scroll;
+    scroll-behavior: smooth;
     a {
       display: inline-flex;
       position: relative;
+      &:before {
+        content: 'Clique para ver no Instagram';
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 8px;
+        font-size: 12px;
+        opacity: 0.5;
+        transition: all ease 300ms;
+      }
       &:after {
         content: attr(data-text);
         position: absolute;
@@ -92,10 +122,19 @@ const Container = styled.section`
         transition: all ease 300ms;
         width: 100%;
       }
-      &:hover {
+      &:hover, &.active {
+        &:before {
+          opacity: 1;
+          background: -webkit-linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+          background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
         &:after {
           opacity: 1;
         }
+      }
+      border: 3px solid transparent;
+      &.active {
+        border: 3px solid var(--main-color);
       }
     }
   }
@@ -103,3 +142,73 @@ const Container = styled.section`
     object-fit: cover;
   }
 `
+
+class GallerySlider {
+  private element: any
+  private x: number
+  private interval: any
+  private offset: number
+  private activeIndex: number
+  private children: any[]
+  private widths: any[]
+
+  constructor(query) {
+    this.element = document.querySelector(query)
+    this.element.style.overflowX = 'hidden'
+    this.children = [...this.element.children]
+    this.x = 0
+    this.activeIndex = -1
+    this.offset = 10
+    this.widths = []
+    this.start()
+    this.setWidths()
+  }
+
+  setWidths() {
+    let width = 0
+    this.children.forEach((child, i) => {
+      if (i === 0) {
+        width = child.scrollWidth / 2
+      } else {
+        width += child.scrollWidth
+      }
+      this.widths.push(width)
+    })
+  }
+
+  start() {
+    this.interval = setInterval(this.scroll.bind(this), 100)
+  }
+
+  stop() {
+    clearInterval(this.interval)
+  }
+
+  scroll() {
+    this.x += this.offset
+    this.element.scrollTo(this.x, 0)
+    if (this.offset > 0 && this.element.scrollWidth - this.element.clientWidth <= this.element.scrollLeft) this.revert()
+    if (this.offset < 0 && this.element.scrollLeft <= 0) this.revert()
+    this.updateActive()
+  }
+  updateActive() {
+    let activeIndex = this.activeIndex
+    if (this.offset > 0) {
+      activeIndex = this.widths.findIndex(width => this.x < width)
+      console.log('activeIndex', activeIndex, this.x)
+    }
+    if (activeIndex !== this.activeIndex) {
+      console.log('activeIndex', this.widths)
+      this.activeIndex = activeIndex
+      this.children.forEach((child, i) => {
+        console.log(i, activeIndex, i === activeIndex)
+        if (i === activeIndex) this.children[i].classList.add('active')
+        else this.children[i].classList.remove('active')
+      })
+      console.log(this.children)
+    }
+  }
+  revert() {
+    this.offset = -1 * this.offset
+  }
+}

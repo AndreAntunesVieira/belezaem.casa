@@ -3333,8 +3333,6 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return __jsx(Container, {
     id: "sobre",
-    "data-img1": "/fotos/6Wjaea.webp",
-    "data-img2": "/fotos/QBrrGPa.webp",
     className: "DefaultSection",
     __self: _this,
     __source: {
@@ -3453,29 +3451,20 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    // @ts-ignore
-    var a = GLightbox({
-      selector: 'glightbox-demo'
-    });
-    console.log(a);
-  }, []);
   return __jsx(Container, {
     id: "galeria",
-    "data-img1": "/fotos/6Wjaea.webp",
-    "data-img2": "/fotos/QBrrGPa.webp",
     className: "DefaultSection",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
+      lineNumber: 6,
       columnNumber: 5
     }
   }, __jsx("h2", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 7,
       columnNumber: 7
     }
   }, "Galeria"), __jsx("div", {
@@ -3483,42 +3472,61 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 9,
       columnNumber: 7
     }
   }, __jsx("a", {
+    target: "_blank",
     href: "https://www.instagram.com/p/B-pQw58HGFh/?utm_source=ig_web_button_share_sheet",
-    className: "glightbox-demo",
     "data-text": "Da s\xE9rie \u201CA vida \xE9 muito curta para ter cabelo chato\u201D parte 2. J\xE1 passou o tempo que ter cabelo colorido era um problema. Hoje com os produtos certos e claro, sempre com um profissional qualificado, voc\xEA pode ter a liberdade de mudar de cor sem se tornar ref\xE9m dela. O Andr\xE9 saiu do verde neon em menos de um m\xEAs para um cabelo platinado e saud\xE1vel!!! Viva a liberdade, viva voc\xEA \uD83D\uDE0D Arraste para ver o antes \u23E9 Cor e corte.",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 10,
       columnNumber: 9
     }
   }, __jsx("img", {
     alt: "Photo shared by \uD83C\uDF40Thaynara Oliveira \uD83C\uDF40 on April 06, 2020 tagging @andreantunesvieira. A imagem pode conter: 1 pessoa, selfie e close-up",
     className: "FFVAD",
     decoding: "auto",
-    style: {
-      objectFit: 'cover'
-    },
     sizes: "509px",
-    srcSet: "https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/92024224_239152434122191_4659765156407886466_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=f-LmLAI2hZ8AX_5tqSz&oh=f28a28bb882a0520164a15278ebf857f&oe=5EC42220 640w,https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p750x750/92024224_239152434122191_4659765156407886466_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=f-LmLAI2hZ8AX_5tqSz&oh=7086e976b88b1091a597c9b525e22df1&oe=5EC5CBA0 750w,https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/92024224_239152434122191_4659765156407886466_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=f-LmLAI2hZ8AX_5tqSz&oh=95e72d3503255c3445db677f533878a3&oe=5EC30B7B 1080w",
-    src: "https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/92024224_239152434122191_4659765156407886466_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=f-LmLAI2hZ8AX_5tqSz&oh=95e72d3503255c3445db677f533878a3&oe=5EC30B7B",
+    src: "/galeria/1.jpg",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 17,
+      columnNumber: 11
+    }
+  })), __jsx("a", {
+    href: "https://www.instagram.com/p/B0TrgseHyNs/?utm_source=ig_web_copy_link",
+    "data-text": "Francesinha diferenciada \uD83D\uDC85\uD83C\uDFFC\u2728",
+    target: "_blank",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26,
+      columnNumber: 9
+    }
+  }, __jsx("img", {
+    alt: "Photo by Gabriela Almeida S in Santo Of\xEDcio Cabelo & Arte with @santooficiocabeloearte. A imagem pode conter: uma ou mais pessoas",
+    className: "FFVAD",
+    decoding: "auto",
+    sizes: "600px",
+    src: "https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/e35/66674183_950304378654205_8562375319157423989_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=bK_46Wg4J90AX9QfomZ&oh=515e7772fe7be3c847ebe156f3559c8b&oe=5EC623A2",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27,
       columnNumber: 11
     }
   })), __jsx("a", {
     href: "https://www.instagram.com/p/B-XkID7HJoB/?utm_source=ig_web_button_share_sheet",
-    className: "glightbox-demo",
+    target: "_blank",
+    "data-text": "\u2702\uFE0F Mariene \u2702\uFE0F Porque a vida \xE9 muito curta para ter cabelo chato.",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 36,
       columnNumber: 9
     }
   }, __jsx("img", {
@@ -3526,24 +3534,21 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     className: "FFVAD",
     decoding: "auto",
     sizes: "490px",
-    style: {
-      objectFit: 'cover'
-    },
-    srcSet: "https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/91404557_245234293538757_3253570499622300804_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=DV9lQyaWkOQAX9-EoWD&oh=dbd0db396d5acf808bfec9dbd3a32394&oe=5EC3CE8B 640w,https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p750x750/91404557_245234293538757_3253570499622300804_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=DV9lQyaWkOQAX9-EoWD&oh=1a2414e5079ae1ccada158506f4c8869&oe=5EC3340B 750w,https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/91404557_245234293538757_3253570499622300804_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=DV9lQyaWkOQAX9-EoWD&oh=e27a177a7815dfab9c367cfa6bf446d2&oe=5EC5B370 1080w",
-    src: "https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/91404557_245234293538757_3253570499622300804_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=DV9lQyaWkOQAX9-EoWD&oh=e27a177a7815dfab9c367cfa6bf446d2&oe=5EC5B370",
+    src: "/galeria/2.jpg",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 37,
       columnNumber: 11
     }
   })), __jsx("a", {
     href: "https://www.instagram.com/p/B8eiwOknWYN/?utm_source=ig_web_copy_link",
-    className: "glightbox-demo",
+    target: "_blank",
+    "data-text": "\u2728 Lash Lifting \u2728",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 46,
       columnNumber: 9
     }
   }, __jsx("img", {
@@ -3551,21 +3556,21 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     className: "FFVAD",
     decoding: "auto",
     sizes: "600px",
-    srcSet: "https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/83450492_2170572239711815_6819682478855908395_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=rkoG8SkG5MoAX-VUY87&oh=b08d8f492251c074e28297ccc7ced95c&oe=5EC44A07 640w,https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/83450492_2170572239711815_6819682478855908395_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=rkoG8SkG5MoAX-VUY87&oh=1a0a017067792c0424f8b205e39ff6d5&oe=5EC59343 750w,https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/83450492_2170572239711815_6819682478855908395_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=rkoG8SkG5MoAX-VUY87&oh=f9e16b4a0150127750888ba7f4ea6361&oe=5EC43743 1080w",
-    src: "https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/83450492_2170572239711815_6819682478855908395_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=rkoG8SkG5MoAX-VUY87&oh=f9e16b4a0150127750888ba7f4ea6361&oe=5EC43743",
+    src: "/galeria/3.jpg",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 47,
       columnNumber: 11
     }
   })), __jsx("a", {
     href: "https://www.instagram.com/p/B1Moeu1Bxb-/?utm_source=ig_web_copy_link",
-    className: "glightbox-demo",
+    target: "_blank",
+    "data-text": "Uma make maravilhosa pra uma mulher MARAVILHOSA @carolkauss \uD83D\uDE0D\u2728\u2665\uFE0F",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 56,
       columnNumber: 9
     }
   }, __jsx("img", {
@@ -3573,12 +3578,11 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     className: "FFVAD",
     decoding: "auto",
     sizes: "600px",
-    srcSet: "https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/67402613_1328967690585707_6872019713448155275_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=Rm3cy4mZsokAX9RVHgo&oh=63d279fe557d3a299fd2e354600fd537&oe=5EC2C7C9 640w,https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/67402613_1328967690585707_6872019713448155275_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=Rm3cy4mZsokAX9RVHgo&oh=3b6b0456211798cb7ce31ad58f25f052&oe=5EC37E8D 750w,https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/e35/67402613_1328967690585707_6872019713448155275_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=Rm3cy4mZsokAX9RVHgo&oh=356d53e7b17a05e9441bb7187937c7ee&oe=5EC4DD73 1080w",
-    src: "https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/e35/67402613_1328967690585707_6872019713448155275_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=Rm3cy4mZsokAX9RVHgo&oh=356d53e7b17a05e9441bb7187937c7ee&oe=5EC4DD73",
+    src: "/galeria/4.jpg",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 57,
       columnNumber: 11
     }
   }))));
@@ -3586,7 +3590,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section.withConfig({
   displayName: "Gallery__Container",
   componentId: "azgdz3-0"
-})(["display:flex;flex-direction:column;align-items:center;justify-content:center;.images{display:flex;max-width:1200px;overflow-x:scroll;a{display:inline-flex;position:relative;&:after{content:attr(data-text);position:absolute;bottom:0;margin:0;min-height:50px;background-color:rgba(0,0,0,0.6);color:white;padding:8px 16px;opacity:0.2;transition:all ease 300ms;width:100%;}&:hover{&:after{opacity:1;}}}}img{object-fit:cover;}"]);
+})(["display:flex;flex-direction:column;align-items:center;justify-content:center;background-color:var(--primary-color-01);.images{display:flex;max-width:1200px;overflow-x:scroll;a{display:inline-flex;position:relative;&:after{content:attr(data-text);position:absolute;bottom:0;margin:0;background-color:rgba(0,0,0,0.6);color:white;padding:8px 16px;opacity:0.2;transition:all ease 300ms;width:100%;}&:hover{&:after{opacity:1;}}}}img{object-fit:cover;}"]);
 
 /***/ }),
 
@@ -3712,6 +3716,72 @@ var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].sectio
 
 /***/ }),
 
+/***/ "./src/components/Testimonials.tsx":
+/*!*****************************************!*\
+  !*** ./src/components/Testimonials.tsx ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _this = undefined,
+    _jsxFileName = "/Users/andre/projects/belezaemcasa/src/components/Testimonials.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return __jsx(Container, {
+    id: "depoimentos",
+    className: "DefaultSection",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 5
+    }
+  }, __jsx("h2", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7,
+      columnNumber: 7
+    }
+  }, "Depoimentos"), __jsx("div", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    className: "disclaimer",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 9
+    }
+  }, __jsx("span", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 11
+    }
+  }, "Em Breve"))));
+});
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section.withConfig({
+  displayName: "Testimonials__Container",
+  componentId: "sc-1g5or35-0"
+})(["display:flex;flex-direction:column;align-items:center;justify-content:center;background-color:black;background-image:url(/boca.webp);min-height:600px;background-position:center center;background-size:cover;div{flex-grow:1;display:flex;align-items:center;justify-content:center;}.disclaimer{padding:48px;background-color:rgba(255,255,255,0.6);font-weight:bold;font-size:32px;border-radius:8px;background:-webkit-linear-gradient(90deg,var(--primary-color),var(--secondary-color));background:linear-gradient(90deg,var(--primary-color),var(--secondary-color));color:white;opacity:0.8;}"]);
+
+/***/ }),
+
 /***/ "./src/pages/index.tsx":
 /*!*****************************!*\
   !*** ./src/pages/index.tsx ***!
@@ -3726,10 +3796,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Presentation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Presentation */ "./src/components/Presentation.tsx");
 /* harmony import */ var _components_About__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/About */ "./src/components/About.tsx");
 /* harmony import */ var _components_Gallery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Gallery */ "./src/components/Gallery.tsx");
+/* harmony import */ var _components_Testimonials__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Testimonials */ "./src/components/Testimonials.tsx");
 var _this = undefined,
     _jsxFileName = "/Users/andre/projects/belezaemcasa/src/pages/index.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -3739,21 +3811,28 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 9,
       columnNumber: 5
     }
   }), __jsx(_components_About__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 10,
       columnNumber: 5
     }
   }), __jsx(_components_Gallery__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 11,
+      columnNumber: 5
+    }
+  }), __jsx(_components_Testimonials__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
       columnNumber: 5
     }
   }));
@@ -3761,7 +3840,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!*************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fandre%2Fprojects%2Fbelezaemcasa%2Fsrc%2Fpages%2Findex.tsx ***!
   \*************************************************************************************************************************************/
@@ -3784,5 +3863,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
