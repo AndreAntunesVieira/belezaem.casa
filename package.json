@@ -16,7 +16,9 @@
   },
   "scripts": {
     "start": "next start",
-    "dev": "next dev"
+    "dev": "next dev",
+    "build": "next build",
+    "export": "rm -rf docs && NODE_ENV=production next build && next export && mv out docs && git add ."
   },
   "name": "belezaemcasa",
   "version": "1.0.0",
