@@ -1,9 +1,30 @@
 :root {
-  --main-color: rgb(126, 84, 198);
+  --main-color: rgb(172, 37, 186);
+  --primary-color: rgb(88, 76, 251);
+  --secondary-color: rgb(255, 29, 124);
+  --primary-color-01: rgba(88, 76, 251, 0.1);
+  --secondary-color-01: rgba(255, 29, 124, 0.1);
 }
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 100vw;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+a,
+a:visited {
+  cursor: pointer;
+  text-decoration: none;
+}
+a:not(.Button, .Card):hover {
+  text-decoration: underline;
 }
 @font-face {
   font-family: 'League Spartan';
@@ -20,6 +41,11 @@ h2 {
   margin: 0 0 48px 0;
   padding-bottom: 24px;
   position: relative;
+
+  background: -webkit-linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   &:after {
     position: absolute;
     content: '';

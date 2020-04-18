@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 export default () => (
-  <Container id="sobre" data-img1="/fotos/6Wjaea.webp" data-img2="/fotos/QBrrGPa.webp" className="DefaultSection">
+  <Container id="sobre" className="DefaultSection">
     <h2>Sobre nós</h2>
 
     <div className="items">
