@@ -18,7 +18,7 @@
     "start": "next start",
     "dev": "next dev",
     "build": "next build",
-    "deploy": "now",
+    "deploy": "now --prod",
     "export": "rm -rf docs && NODE_ENV=production next build && next export && mv out docs && git add ."
   },
   "name": "belezaemcasa",

@@ -41,7 +41,8 @@ const Container = styled.section`
   .items {
     display: flex;
     max-width: 1200px;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
     .item {
       width: 360px;
       margin: 0 16px;
@@ -63,6 +64,14 @@ const Container = styled.section`
         text-align: center;
         font-size: 16px;
         color: rgba(0, 0, 0, 0.6);
+      }
+      @media (max-width: 768px) {
+        margin: 16px 0;
+      }
+    }
+    @media (max-width: 768px) {
+      & {
+        flex-direction: column;
       }
     }
   }

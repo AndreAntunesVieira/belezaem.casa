@@ -10,12 +10,16 @@ export default () => (
     <div className="contacts">
       <div>Contatos:</div>
       <div>
-        <a target="_blank" href="https://api.whatsapp.com/send?phone=5551989108976&text=Oi%2C%20gostaria%20de%20agendar%20servi%C3%A7o%20de%3A">
+        <a
+          target="_blank"
+          href="https://api.whatsapp.com/send?phone=5551989108976&text=Oi%2C%20gostaria%20de%20agendar%20servi%C3%A7o%20de%3A">
           <img src="/whatsicon.webp" />
           51 98910-8976
         </a>
         <span>&</span>
-        <a target="_blank" href="https://api.whatsapp.com/send?phone=5551982073632&text=Oi%2C%20gostaria%20de%20agendar%20servi%C3%A7o%20de%3A">
+        <a
+          target="_blank"
+          href="https://api.whatsapp.com/send?phone=5551982073632&text=Oi%2C%20gostaria%20de%20agendar%20servi%C3%A7o%20de%3A">
           <img src="/whatsicon.webp" />
           51 98207-3632
         </a>
@@ -56,6 +60,10 @@ const Container = styled.section`
     color: white;
     letter-spacing: 4px;
     font-family: 'League Spartan', Arial, sans-serif;
+    text-align: center;
+    @media (max-width: 768px) {
+      font-size: 40px;
+    }
   }
   .contacts {
     flex-grow: 0;
@@ -90,6 +98,13 @@ const Container = styled.section`
       &:hover {
         background-color: rgba(0, 0, 0, 0.4);
         border-radius: 16px;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .contacts {
+      > * {
+        flex-direction: column;
       }
     }
   }

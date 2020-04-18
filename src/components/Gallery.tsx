@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import GallerySlider from '../helpers/GallerySlider'
 
 export default () => {
   let gallery: any
@@ -91,9 +92,10 @@ const Container = styled.section`
   background-color: var(--primary-color-01);
   .images {
     display: flex;
+    width: 100%;
     max-width: 1200px;
     overflow-x: scroll;
-    scroll-behavior: smooth;
+    //scroll-behavior: smooth;
     a {
       display: inline-flex;
       position: relative;
@@ -122,7 +124,8 @@ const Container = styled.section`
         transition: all ease 300ms;
         width: 100%;
       }
-      &:hover, &.active {
+      &:hover,
+      &.active {
         &:before {
           opacity: 1;
           background: -webkit-linear-gradient(90deg, var(--primary-color), var(--secondary-color));
@@ -140,75 +143,7 @@ const Container = styled.section`
   }
   img {
     object-fit: cover;
+    max-height: 80vh;
+    width: auto;
   }
 `
-
-class GallerySlider {
-  private element: any
-  private x: number
-  private interval: any
-  private offset: number
-  private activeIndex: number
-  private children: any[]
-  private widths: any[]
-
-  constructor(query) {
-    this.element = document.querySelector(query)
-    this.element.style.overflowX = 'hidden'
-    this.children = [...this.element.children]
-    this.x = 0
-    this.activeIndex = -1
-    this.offset = 10
-    this.widths = []
-    this.start()
-    this.setWidths()
-  }
-
-  setWidths() {
-    let width = 0
-    this.children.forEach((child, i) => {
-      if (i === 0) {
-        width = child.scrollWidth / 2
-      } else {
-        width += child.scrollWidth
-      }
-      this.widths.push(width)
-    })
-  }
-
-  start() {
-    this.interval = setInterval(this.scroll.bind(this), 100)
-  }
-
-  stop() {
-    clearInterval(this.interval)
-  }
-
-  scroll() {
-    this.x += this.offset
-    this.element.scrollTo(this.x, 0)
-    if (this.offset > 0 && this.element.scrollWidth - this.element.clientWidth <= this.element.scrollLeft) this.revert()
-    if (this.offset < 0 && this.element.scrollLeft <= 0) this.revert()
-    this.updateActive()
-  }
-  updateActive() {
-    let activeIndex = this.activeIndex
-    if (this.offset > 0) {
-      activeIndex = this.widths.findIndex(width => this.x < width)
-      console.log('activeIndex', activeIndex, this.x)
-    }
-    if (activeIndex !== this.activeIndex) {
-      console.log('activeIndex', this.widths)
-      this.activeIndex = activeIndex
-      this.children.forEach((child, i) => {
-        console.log(i, activeIndex, i === activeIndex)
-        if (i === activeIndex) this.children[i].classList.add('active')
-        else this.children[i].classList.remove('active')
-      })
-      console.log(this.children)
-    }
-  }
-  revert() {
-    this.offset = -1 * this.offset
-  }
-}

@@ -1,0 +1,9 @@
+{
+  "regions": ["gru1"],
+  "public": true,
+  "trailingSlash": false,
+
+  "github": {
+    "enabled": true
+  }
+}
