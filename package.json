@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "next": "^9.3.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.0",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.0",
+    "@types/react": "^16.9.34",
+    "@types/styled-components": "^5.1.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "prettier": "^2.0.4",
+    "sass": "^1.26.3"
+  },
+  "scripts": {
+    "start": "next start",
+    "dev": "next dev"
+  },
+  "name": "belezaemcasa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:AndreAntunesVieira/belezaem.casa.git",
+  "author": "Andre Antunes Vieira <andreantunesv@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
