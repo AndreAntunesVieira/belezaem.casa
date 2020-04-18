@@ -1,8 +1,12 @@
-import React from 'react'
-import './style.scss'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'))
+    }
+  }, [])
   return (
     <>
       <Head>
@@ -13,14 +17,15 @@ function MyApp({ Component, pageProps }) {
         <meta name="author" content="Beleza em casa" />
         <meta name="generator" content="Starfield Technologies; Go Daddy Website Builder 8.0.0000" />
         <link rel="manifest" href="/manifest.webmanifest" />
-        <link rel="apple-touch-icon" sizes="57x57" href="/public/favicon-57.webp" />
-        <link rel="apple-touch-icon" sizes="60x60" href="/public/favicon-60.webp" />
-        <link rel="apple-touch-icon" sizes="72x72" href="/public/favicon-72.webp" />
-        <link rel="apple-touch-icon" sizes="114x114" href="/public/favicon-114.webp" />
-        <link rel="apple-touch-icon" sizes="120x120" href="/public/favicon-120.webp" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/public/favicon-144.webp" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/public/favicon-152.webp" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/public/favicon-180.webp" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/favicon-57.webp" />
+        <link rel="apple-touch-icon" sizes="60x60" href="/favicon-60.webp" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/favicon-72.webp" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/favicon-114.webp" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120.webp" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.webp" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.webp" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.webp" />
+        <link rel="stylesheet" type="text/css" href="/style.css" />
         <meta property="og:url" content="https://belezaem.casa/" />
         <meta property="og:site_name" content="Beleza em casa" />
         <meta property="og:title" content="Bem-vindo(a) a Beleza em casa" />
