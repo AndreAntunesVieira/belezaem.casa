@@ -7,17 +7,17 @@ const About = () => (
 
     <div className="items">
       <Item
-        image="/fotos/saude.webp"
+        image="/fotos/saude.jpg"
         title="Saúde e segurança"
         text="Nada de salão lotado, fila de espera, levamos a saúde muito a sério"
       />
       <Item
-        image="/fotos/beleza-completa.webp"
+        image="/fotos/beleza-completa.jpg"
         title="Beleza Completa"
         text="Todos os principais serviços de um salão de beleza, com qualidade e tranquilidade"
       />
       <Item
-        image="/fotos/em-casa.webp"
+        image="/fotos/em-casa.jpg"
         title="#EmCasa"
         text="Ambiente descontraído de amizade, com música, bebida,  como se estivesse #EmCasa"
       />

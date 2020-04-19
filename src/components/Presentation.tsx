@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Presentation = () => (
-  <Container id="apresentacao" data-img1="/fotos/6Wjaea.webp" data-img2="/fotos/QBrrGPa.webp">
+  <Container id="apresentacao" data-img1="/fotos/6Wjaea.jpg" data-img2="/fotos/QBrrGPa.jpg">
     <div className="header">
       <h1>
         <img alt="Beleza em casa" src="/logo-white-50.png" className="logo" />
@@ -17,7 +17,7 @@ const Presentation = () => (
           href="https://api.whatsapp.com/send?phone=5551989108976&text=Oi%2C%20gostaria%20de%20agendar%20servi%C3%A7o%20de%3A">
           <small>Gaby</small>
           <div>
-            <img src="/whatsicon.webp" />
+            <img src="/whatsapp.png" />
             51 98910-8976
           </div>
         </a>
@@ -27,7 +27,7 @@ const Presentation = () => (
           href="https://api.whatsapp.com/send?phone=5551982073632&text=Oi%2C%20gostaria%20de%20agendar%20servi%C3%A7o%20de%3A">
           <small>Thay</small>
           <div>
-            <img src="/whatsicon.webp" />
+            <img src="/whatsapp.png" />
             51 98207-3632
           </div>
         </a>
@@ -38,7 +38,7 @@ const Presentation = () => (
 
 const Container = styled.section`
   min-height: 85vh;
-  background-image: url(/fotos/w65xrjq.webp);
+  background-image: url(/fotos/w65xrjq.jpg);
   background-size: cover;
   background-position: center center;
   display: flex;
@@ -115,8 +115,8 @@ const Container = styled.section`
         font-size: 13px;
       }
       img {
-        width: 32px;
-        height: 32px;
+        width: 24px;
+        height: 24px;
         margin-right: 8px;
       }
       &:hover {
