@@ -27,7 +27,7 @@ const Container = styled.section`
     height: 100%;
     display: block;
     position: absolute;
-    background-image: url(/boca.jpg);
+    background-image: url(/fotos/boca.jpg);
     background-position: center center;
     background-size: cover;
     opacity: 0.6;
