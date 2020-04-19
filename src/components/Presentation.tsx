@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default () => (
+const Presentation = () => (
   <Container id="apresentacao" data-img1="/fotos/6Wjaea.webp" data-img2="/fotos/QBrrGPa.webp">
     <div className="header">
-      <h1>Beleza em casa</h1>
+      <h1>
+        <img alt="Beleza em casa" src="/logo-white-50.png" className="logo" />
+      </h1>
     </div>
     <div className="slogan">Bem-vindo(a) a Beleza em casa</div>
     <div className="contacts">
@@ -46,7 +48,7 @@ const Container = styled.section`
   }
   h1 {
     margin: 0;
-    padding: 16px;
+    padding: 8px;
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
@@ -109,3 +111,5 @@ const Container = styled.section`
     }
   }
 `
+
+export default Presentation

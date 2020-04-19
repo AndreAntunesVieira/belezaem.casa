@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-export default () => {
-  return (
-    <Container id="creditos" className="DefaultSection">
-      <div className="content">
-        <div>Desenvolvido por @AndreAntunesVieira</div>
-        <div>Usando React + NextJs</div>
+const Credits = () => (
+  <Container id="creditos" className="DefaultSection">
+    <div className="content">
+      <div>
+        Desenvolvido por{' '}
+        <a href="https://www.linkedin.com/in/andreantunesvieira/" target="_blank">
+          @AndreAntunesVieira
+        </a>
       </div>
-    </Container>
-  )
-}
+      <div>Usando React + NextJs</div>
+    </div>
+  </Container>
+)
 
 const Container = styled.section`
   display: flex;
@@ -25,4 +28,11 @@ const Container = styled.section`
     display: flex;
     justify-content: space-between;
   }
+  a {
+    color: var(--secondary-color);
+    &:hover {
+      color: var(--secondary-color-bright);
+    }
+  }
 `
+export default Credits

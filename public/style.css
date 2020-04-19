@@ -2,6 +2,7 @@
   --main-color: rgb(172, 37, 186);
   --primary-color: rgb(88, 76, 251);
   --secondary-color: rgb(255, 29, 124);
+  --secondary-color-bright: rgb(255, 112, 167);
   --primary-color-01: rgba(88, 76, 251, 0.1);
   --secondary-color-01: rgba(255, 29, 124, 0.1);
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default () => (
+const About = () => (
   <Container id="sobre" className="DefaultSection">
     <h2>Sobre nós</h2>
 
@@ -76,3 +76,5 @@ const Container = styled.section`
     }
   }
 `
+
+export default About

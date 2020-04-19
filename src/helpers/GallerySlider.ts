@@ -7,6 +7,7 @@ export default class GallerySlider {
   private children: any[]
   private widths: any[]
   private running: boolean
+  private hover: boolean
 
   constructor(query) {
     this.element = document.querySelector(query)
@@ -17,12 +18,13 @@ export default class GallerySlider {
     this.offset = 3
     this.widths = []
     this.running = false
+    this.hover = false
     this.setWidths()
     document.addEventListener('scroll', this.onScroll.bind(this))
   }
 
   onScroll() {
-    if (!this.running) {
+    if (!this.running && !this.hover) {
       if (window.scrollY + window.innerHeight - 200 >= this.element.offsetTop) {
         this.start()
       }
@@ -31,6 +33,15 @@ export default class GallerySlider {
         this.stop()
       }
     }
+  }
+
+  onMouseEnter() {
+    this.hover = true
+    this.stop()
+  }
+  onMouseLeave() {
+    this.hover = false
+    this.start()
   }
 
   setWidths() {

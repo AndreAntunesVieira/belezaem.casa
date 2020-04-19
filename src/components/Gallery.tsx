@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import GallerySlider from '../helpers/GallerySlider'
 
-export default () => {
+const Gallery = () => {
   let gallery: any
   useEffect(() => {
     gallery = new GallerySlider('#galeria .images')
@@ -11,7 +11,7 @@ export default () => {
     <Container id="galeria" className="DefaultSection">
       <h2>Galeria</h2>
 
-      <div className="images" onMouseEnter={() => gallery.stop()} onMouseLeave={() => gallery.start()}>
+      <div className="images" onMouseEnter={() => gallery.onMouseEnter()} onMouseLeave={() => gallery.onMouseLeave()}>
         <a
           target="_blank"
           href="https://www.instagram.com/p/B-pQw58HGFh/?utm_source=ig_web_button_share_sheet"
@@ -147,3 +147,5 @@ const Container = styled.section`
     width: auto;
   }
 `
+
+export default Gallery

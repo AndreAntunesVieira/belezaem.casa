@@ -1,19 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-export default () => {
-  return (
-    <Container id="depoimentos" className="DefaultSection">
-      <h2>Depoimentos</h2>
+const Testimonials = () => (
+  <Container id="depoimentos" className="DefaultSection">
+    <h2>Depoimentos</h2>
 
-      <div>
-        <div className="disclaimer">
-          <span>Em Breve</span>
-        </div>
+    <div>
+      <div className="disclaimer">
+        <span>Em Breve</span>
       </div>
-    </Container>
-  )
-}
+    </div>
+  </Container>
+)
 
 const Container = styled.section`
   display: flex;
@@ -52,3 +50,4 @@ const Container = styled.section`
     opacity: 0.8;
   }
 `
+export default Testimonials
