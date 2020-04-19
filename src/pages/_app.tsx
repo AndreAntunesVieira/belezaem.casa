@@ -6,6 +6,13 @@ function MyApp({ Component, pageProps }) {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'))
     }
+    const loadFonts = async (timeout, ...families) => {
+      // @ts-ignore
+      if (typeof WebFont === 'undefined') return delay(timeout).then(() => loadFonts(timeout, ...families))
+      // @ts-ignore
+      return new Promise(active => WebFont.load({ google: { families }, active }))
+    }
+    loadFonts(100, 'Gotham:300,400,700,900', 'Montserrat:300,400,700,900')
   }, [])
   return (
     <>
@@ -26,6 +33,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.webp" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.webp" />
         <link rel="stylesheet" type="text/css" href="/style.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" async defer />
         <meta property="og:url" content="https://belezaem.casa/" />
         <meta property="og:site_name" content="Beleza em casa" />
         <meta property="og:title" content="Bem-vindo(a) a Beleza em casa" />
