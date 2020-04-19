@@ -1,7 +1,6 @@
 {
-  "name": "belezaemcasa",
+  "name": "belezaem.casa",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "git@github.com:AndreAntunesVieira/belezaem.casa.git",
   "author": "Andre Antunyes Vieira <andreantunesv@gmail.com>",
   "license": "MIT",
