@@ -53,7 +53,8 @@ const Container = styled.section`
       h3 {
         font-size: 22px;
         color: rgba(0, 0, 0, 0.6);
-        font-family: 'League Spartan', Arial, sans-serif;
+        font-family: var(--title-font-family);
+        font-weight: var(--title-font-weight);
       }
       img {
         border-radius: 50%;

@@ -10,20 +10,26 @@ const Presentation = () => (
     </div>
     <div className="slogan">Bem-vindo(a) a Beleza em casa</div>
     <div className="contacts">
-      <div>Contatos:</div>
+      <h3>Contatos:</h3>
       <div>
         <a
           target="_blank"
           href="https://api.whatsapp.com/send?phone=5551989108976&text=Oi%2C%20gostaria%20de%20agendar%20servi%C3%A7o%20de%3A">
-          <img src="/whatsicon.webp" />
-          51 98910-8976
+          <small>Gaby</small>
+          <div>
+            <img src="/whatsicon.webp" />
+            51 98910-8976
+          </div>
         </a>
         <span>&</span>
         <a
           target="_blank"
           href="https://api.whatsapp.com/send?phone=5551982073632&text=Oi%2C%20gostaria%20de%20agendar%20servi%C3%A7o%20de%3A">
-          <img src="/whatsicon.webp" />
-          51 98207-3632
+          <small>Thay</small>
+          <div>
+            <img src="/whatsicon.webp" />
+            51 98207-3632
+          </div>
         </a>
       </div>
     </div>
@@ -52,7 +58,8 @@ const Container = styled.section`
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
-    font-family: 'League Spartan', Arial, sans-serif;
+    font-family: var(--title-font-family);
+    font-weight: var(--title-font-weight);
   }
   .slogan {
     display: flex;
@@ -61,7 +68,8 @@ const Container = styled.section`
     font-size: 60px;
     color: white;
     letter-spacing: 4px;
-    font-family: 'League Spartan', Arial, sans-serif;
+    font-family: var(--title-font-family);
+    font-weight: var(--title-font-weight);
     text-align: center;
     @media (max-width: 768px) {
       font-size: 40px;
@@ -78,8 +86,16 @@ const Container = styled.section`
     font-size: 28px;
     > * {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
+    }
+    h3 {
+      margin: 0;
+      padding: 8px 16px;
+      background-color: rgba(0, 0, 0, 0.2);
+      color: white;
+      border-radius: 8px;
     }
     a {
       padding: 8px 16px;
@@ -92,6 +108,12 @@ const Container = styled.section`
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      small {
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
+      }
       img {
         width: 32px;
         height: 32px;
