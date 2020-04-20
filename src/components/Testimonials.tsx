@@ -1,17 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
-const Testimonials = () => (
-  <Container id="depoimentos" className="DefaultSection">
-    <h2>Depoimentos</h2>
+const getAllTestimonials = async () => {
+  const res = await fetch('https://local.mesalva.com/api/testimonials')
+  const content = await res.json()
+  console.log(content)
+}
 
-    <div>
-      <div className="disclaimer">
-        <span>Em Breve</span>
+const Testimonials = () => {
+  useEffect(() => {
+    getAllTestimonials()
+  }, [])
+  return (
+    <Container id="depoimentos" className="DefaultSection">
+      <script src="//cdn.jsdelivr.net/npm/faunadb@latest/dist/faunadb-min.js" />
+      <h2>Depoimentos</h2>
+
+      <div>
+        <div className="disclaimer">
+          <span>Em Breve</span>
+        </div>
       </div>
-    </div>
-  </Container>
-)
+    </Container>
+  )
+}
 
 const Container = styled.section`
   display: flex;
