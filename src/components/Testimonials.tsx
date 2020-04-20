@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { getEnv } from '../helpers/Environment'
 
 const getAllTestimonials = async () => {
-  const res = await fetch('https://local.mesalva.com/api/testimonials')
+  const api = getEnv('API_URL', 'https://belezaem.casa/api')
+  const res = await fetch(`${api}/testimonials`)
   const content = await res.json()
   console.log(content)
 }
