@@ -1,18 +1,31 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
 
+declare global {
+  interface Window {
+    dataLayer: any
+    WebFont: any
+  }
+}
+
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'))
     }
+    const delay = timeout => new Promise(resolve => setTimeout(resolve, timeout))
     const loadFonts = async (timeout, ...families) => {
-      // @ts-ignore
-      if (typeof WebFont === 'undefined') return delay(timeout).then(() => loadFonts(timeout, ...families))
-      // @ts-ignore
-      return new Promise(active => WebFont.load({ google: { families }, active }))
+      if (typeof window.WebFont === 'undefined') return delay(timeout).then(() => loadFonts(timeout, ...families))
+      return new Promise(active => window.WebFont.load({ google: { families }, active }))
     }
     loadFonts(100, 'Overpass:700').then(() => window.document.querySelector('body').classList.add('LoadedFonts'))
+
+    window.dataLayer = window.dataLayer || []
+    function gtag(...args: any[]) {
+      window.dataLayer.push(arguments)
+    }
+    gtag('js', new Date())
+    gtag('config', 'G-4Z910N1CJ8')
   }, [])
   return (
     <>
@@ -46,6 +59,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:image" content="/fotos/w65xrjq.png" />
         <meta name="twitter:image:alt" content="Beleza em casa" />
         <meta name="theme-color" content="#7E54C6" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4Z910N1CJ8" />
       </Head>
       <Component {...pageProps} />
     </>
