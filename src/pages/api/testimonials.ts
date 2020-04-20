@@ -1,18 +1,20 @@
 import { MongoClient } from 'mongodb'
+import { getEnv } from '../../helpers/Environment'
+const promisefy = (method, ...args) => {
+  return new Promise((resolve, reject) => {
+    args.push(err => (err ? reject(err) : resolve()))
+    method(...args)
+  })
+}
 
 class DB {
   protected client
   constructor() {
-    this.client = new MongoClient(process.env.MONGODB_URL, { useNewUrlParser: true })
+    this.client = new MongoClient(getEnv('MONGODB_URL'), { useNewUrlParser: true })
   }
   static collection = ''
   async connect() {
-    return new Promise((resolve, reject) =>
-      this.client.connect(async err => {
-        if (err) return reject(err)
-        return resolve()
-      })
-    )
+    return promisefy(this.client.connect)
   }
   get collection() {
     const constructor: any = this.constructor
