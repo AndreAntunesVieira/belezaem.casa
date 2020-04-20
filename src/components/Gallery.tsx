@@ -18,7 +18,8 @@ const Gallery = () => {
         onTouchStart={e => gallery.onTouchStart(e)}
         onTouchEnd={e => gallery.onTouchEnd(e)}
         onMouseEnter={() => gallery.onMouseEnter()}
-        onMouseLeave={() => gallery.onMouseLeave()}>
+        onMouseLeave={() => gallery.onMouseLeave()}
+        onMouseMove={() => gallery.onMouseMove()}>
         <a
           target="_blank"
           href="https://www.instagram.com/p/B-pQw58HGFh/?utm_source=ig_web_button_share_sheet"

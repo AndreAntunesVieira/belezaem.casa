@@ -32,7 +32,7 @@ export default class GallerySlider {
     document.addEventListener('scroll', this.onScroll.bind(this))
   }
   onScroll() {
-    if (!this.running && !this.hover) {
+    if (!this.running && !this.hover && !this.touched) {
       if (window.scrollY + window.innerHeight - 200 >= this.element.offsetTop) {
         this.start()
       }
@@ -49,6 +49,9 @@ export default class GallerySlider {
   onMouseLeave() {
     this.hover = false
     this.start()
+  }
+  onMouseMove(e) {
+    e.preventDefault()
   }
   onTouchStart(e) {
     this.stop()
@@ -107,8 +110,8 @@ export default class GallerySlider {
     this.running = true
   }
   stop() {
-    if (!this.running) return null
     clearInterval(this.interval)
+    if (!this.running) return null
     this.running = false
   }
   setX(x) {
@@ -124,7 +127,8 @@ export default class GallerySlider {
   setAnimatedStep(step, count) {
     this.x += step
     this.element.scrollTo(this.x, 0)
-    if (--count > 0) setTimeout(() => this.setAnimatedStep(step, count), 40)
+    if (--count > 0) return setTimeout(() => this.setAnimatedStep(step, count), 40)
+    this.touched = false
   }
   slideAside() {
     this.setX(this.x + this.offset)
