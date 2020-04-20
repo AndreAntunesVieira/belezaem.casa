@@ -31,7 +31,6 @@ export default class GallerySlider {
     this.setWidths()
     document.addEventListener('scroll', this.onScroll.bind(this))
   }
-
   onScroll() {
     if (!this.running && !this.hover) {
       if (window.scrollY + window.innerHeight - 200 >= this.element.offsetTop) {
@@ -43,7 +42,6 @@ export default class GallerySlider {
       }
     }
   }
-
   onMouseEnter() {
     this.hover = true
     this.stop()
@@ -52,17 +50,17 @@ export default class GallerySlider {
     this.hover = false
     this.start()
   }
-
   onTouchStart(e) {
     this.stop()
     const touchElement = e.changedTouches[0]
     this.touchStart = touchElement.pageX
+    this.hover = false
     this.touched = true
   }
-
   onTouchEnd(e) {
     const touchElement = e.changedTouches[0]
     const diff = touchElement.pageX - this.touchStart
+    this.hover = false
     if (Math.abs(diff) < 30) return this.start()
     if (diff > 0) return this.slideLeft()
     return this.slideRight()
@@ -87,7 +85,6 @@ export default class GallerySlider {
     const width = this.children[index].scrollWidth
     return rule ? Math.ceil((window.innerWidth - width - 16) / 2) : 0
   }
-
   setWidths() {
     let activeWidth = 0
     let width = 0
@@ -104,13 +101,11 @@ export default class GallerySlider {
       this.widths.push(width)
     })
   }
-
   start() {
     if (this.running) return null
     this.interval = setInterval(this.slideAside.bind(this), 40)
     this.running = true
   }
-
   stop() {
     if (!this.running) return null
     clearInterval(this.interval)
@@ -122,24 +117,21 @@ export default class GallerySlider {
   }
   setXAnimated(x) {
     const current = this.x
-    let count = 20
+    let count = 10
     const step = (x - current) / count
     this.setAnimatedStep(step, count)
   }
-
   setAnimatedStep(step, count) {
     this.x += step
     this.element.scrollTo(this.x, 0)
     if (--count > 0) setTimeout(() => this.setAnimatedStep(step, count), 40)
   }
-
   slideAside() {
     this.setX(this.x + this.offset)
     if (this.offset > 0 && this.element.scrollWidth - this.element.clientWidth <= this.element.scrollLeft) this.revert()
     if (this.offset < 0 && this.element.scrollLeft <= 0) this.revert()
     this.updateActive()
   }
-
   updateActive() {
     let activeIndex = this.activeIndex
     if (this.offset > 0) {
