@@ -4,6 +4,8 @@ import GallerySlider from '../helpers/GallerySlider'
 
 const Gallery = () => {
   let gallery: any
+  let start = 0,
+    diff = 0
   useEffect(() => {
     gallery = new GallerySlider('#galeria .images')
   }, [])
@@ -11,14 +13,16 @@ const Gallery = () => {
     <Container id="galeria" className="DefaultSection">
       <h2>Galeria</h2>
 
-      <div className="images" onMouseEnter={() => gallery.onMouseEnter()} onMouseLeave={() => gallery.onMouseLeave()}>
+      <div
+        className="images"
+        onTouchStart={e => gallery.onTouchStart(e)}
+        onTouchEnd={e => gallery.onTouchEnd(e)}
+        onMouseEnter={() => gallery.onMouseEnter()}
+        onMouseLeave={() => gallery.onMouseLeave()}>
         <a
           target="_blank"
           href="https://www.instagram.com/p/B-pQw58HGFh/?utm_source=ig_web_button_share_sheet"
-          data-text="Da série “A vida é muito curta para ter cabelo chato” parte 2. Já passou o tempo que ter cabelo colorido era
-            um problema. Hoje com os produtos certos e claro, sempre com um profissional qualificado, você pode ter a
-            liberdade de mudar de cor sem se tornar refém dela. O André saiu do verde neon em menos de um mês para um
-            cabelo platinado e saudável!!! Viva a liberdade, viva você 😍 Arraste para ver o antes ⏩ Cor e corte.">
+          data-text="Da série “A vida é muito curta para ter cabelo chato” parte 2...">
           <img
             alt="Photo shared by 🍀Thaynara Oliveira 🍀 on April 06, 2020 tagging @andreantunesvieira. A imagem pode conter: 1 pessoa, selfie e close-up"
             className="FFVAD"
@@ -27,7 +31,6 @@ const Gallery = () => {
             src="/galeria/1.jpg"
           />
         </a>
-
         <a
           href="https://www.instagram.com/p/B0TrgseHyNs/?utm_source=ig_web_copy_link"
           data-text="Francesinha diferenciada 💅🏼✨"
@@ -40,7 +43,6 @@ const Gallery = () => {
             src="https://instagram.fpoa13-1.fna.fbcdn.net/v/t51.2885-15/e35/66674183_950304378654205_8562375319157423989_n.jpg?_nc_ht=instagram.fpoa13-1.fna.fbcdn.net&amp;_nc_cat=101&amp;_nc_ohc=bK_46Wg4J90AX9QfomZ&amp;oh=515e7772fe7be3c847ebe156f3559c8b&amp;oe=5EC623A2"
           />
         </a>
-
         <a
           href="https://www.instagram.com/p/B-XkID7HJoB/?utm_source=ig_web_button_share_sheet"
           target="_blank"
@@ -53,7 +55,6 @@ const Gallery = () => {
             src="/galeria/2.jpg"
           />
         </a>
-
         <a
           href="https://www.instagram.com/p/B8eiwOknWYN/?utm_source=ig_web_copy_link"
           target="_blank"
@@ -66,7 +67,6 @@ const Gallery = () => {
             src="/galeria/3.jpg"
           />
         </a>
-
         <a
           href="https://www.instagram.com/p/B1Moeu1Bxb-/?utm_source=ig_web_copy_link"
           target="_blank"
@@ -95,7 +95,6 @@ const Container = styled.section`
     width: 100%;
     max-width: 1200px;
     overflow-x: scroll;
-    //scroll-behavior: smooth;
     a {
       display: inline-flex;
       position: relative;
@@ -140,11 +139,15 @@ const Container = styled.section`
         border: 3px solid var(--main-color);
       }
     }
-  }
-  img {
-    object-fit: cover;
-    max-height: 80vh;
-    width: auto;
+    img {
+      object-fit: cover;
+      max-height: 80vh;
+      width: auto;
+      position: relative;
+      @media (max-width: 768px) {
+        height: 300px;
+      }
+    }
   }
 `
 

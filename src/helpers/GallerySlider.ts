@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default class GallerySlider {
   private element: any
   private x: number
@@ -6,8 +8,11 @@ export default class GallerySlider {
   private activeIndex: number
   private children: any[]
   private widths: any[]
+  private activeWidths: any[]
   private running: boolean
   private hover: boolean
+  private touched: boolean
+  private touchStart: number
 
   constructor(query) {
     this.element = document.querySelector(query)
@@ -15,10 +20,14 @@ export default class GallerySlider {
     this.children = [...this.element.children]
     this.x = 0
     this.activeIndex = -1
+    this.children[0].classList.add('active')
     this.offset = 3
     this.widths = []
+    this.activeWidths = []
     this.running = false
     this.hover = false
+    this.touched = false
+    this.touchStart = 0
     this.setWidths()
     document.addEventListener('scroll', this.onScroll.bind(this))
   }
@@ -44,23 +53,61 @@ export default class GallerySlider {
     this.start()
   }
 
+  onTouchStart(e) {
+    this.stop()
+    const touchElement = e.changedTouches[0]
+    this.touchStart = touchElement.pageX
+    this.touched = true
+  }
+
+  onTouchEnd(e) {
+    const touchElement = e.changedTouches[0]
+    const diff = touchElement.pageX - this.touchStart
+    if (Math.abs(diff) < 30) return this.start()
+    if (diff > 0) return this.slideLeft()
+    return this.slideRight()
+  }
+  slideLeft() {
+    if (this.activeIndex - 1 < 0) return null
+    let newX = this.widths[this.activeIndex - 2] || 0
+    const index = this.activeIndex - 1
+    const widthDiff = this.getWidthDiff(index, index > 0)
+    this.setXAnimated(newX - widthDiff)
+    this.setActive(index)
+  }
+  slideRight() {
+    if (this.activeIndex + 2 > this.widths.length) return null
+    let newX = this.widths[this.activeIndex]
+    const index = this.activeIndex + 1
+    const widthDiff = this.getWidthDiff(index, index < this.children.length - 1)
+    this.setXAnimated(newX - widthDiff)
+    this.setActive(index)
+  }
+  getWidthDiff(index, rule) {
+    const width = this.children[index].scrollWidth
+    return rule ? Math.ceil((window.innerWidth - width - 16) / 2) : 0
+  }
+
   setWidths() {
+    let activeWidth = 0
     let width = 0
     this.children.forEach((child, i) => {
       if (i === 0) {
-        width = child.scrollWidth / 2
+        activeWidth = child.scrollWidth / 2
       } else if (i >= this.children.length - 2) {
-        width += child.scrollWidth / 2
+        activeWidth += child.scrollWidth / 2
       } else {
-        width += child.scrollWidth
+        activeWidth += child.scrollWidth
       }
+      width += child.scrollWidth + 6
+      this.activeWidths.push(activeWidth)
       this.widths.push(width)
     })
   }
 
   start() {
     if (this.running) return null
-    this.interval = setInterval(this.scroll.bind(this), 40)
+    this.interval = setInterval(this.slideAside.bind(this), 40)
     this.running = true
   }
 
@@ -69,28 +116,47 @@ export default class GallerySlider {
     clearInterval(this.interval)
     this.running = false
   }
-
-  scroll() {
-    this.x += this.offset
+  setX(x) {
+    this.x = x
     this.element.scrollTo(this.x, 0)
+  }
+  setXAnimated(x) {
+    const current = this.x
+    let count = 20
+    const step = (x - current) / count
+    this.setAnimatedStep(step, count)
+  }
+
+  setAnimatedStep(step, count) {
+    this.x += step
+    this.element.scrollTo(this.x, 0)
+    if (--count > 0) setTimeout(() => this.setAnimatedStep(step, count), 40)
+  }
+
+  slideAside() {
+    this.setX(this.x + this.offset)
     if (this.offset > 0 && this.element.scrollWidth - this.element.clientWidth <= this.element.scrollLeft) this.revert()
     if (this.offset < 0 && this.element.scrollLeft <= 0) this.revert()
     this.updateActive()
   }
+
   updateActive() {
     let activeIndex = this.activeIndex
     if (this.offset > 0) {
-      activeIndex = this.widths.findIndex(width => this.x < width)
+      activeIndex = this.activeWidths.findIndex(width => this.x < width)
     } else {
-      activeIndex = this.widths.findIndex(width => this.x + 200 < width)
+      activeIndex = this.activeWidths.findIndex(width => this.x + 200 < width)
     }
     if (activeIndex !== this.activeIndex) {
-      this.activeIndex = activeIndex
-      this.children.forEach((child, i) => {
-        if (i === activeIndex) this.children[i].classList.add('active')
-        else this.children[i].classList.remove('active')
-      })
+      this.setActive(activeIndex)
     }
+  }
+  setActive(activeIndex) {
+    this.activeIndex = activeIndex
+    this.children.forEach((child, i) => {
+      if (i === activeIndex) this.children[i].classList.add('active')
+      else this.children[i].classList.remove('active')
+    })
   }
   revert() {
     this.offset = -1 * this.offset
