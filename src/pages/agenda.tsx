@@ -1,14 +1,97 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
+
+const getNextSchedules = async () => {
+  console.log('getNextSchedules')
+  const res = await fetch(`/api/next-schedules`)
+  const content = await res.json()
+  console.log('getNextSchedules 2', content)
+  return content.days
+}
 
 export default function Agenda() {
+  const [days, setDays] = useState([])
+  useEffect(() => {
+    getNextSchedules().then(days => setDays(days))
+  }, [])
   return (
-    <iframe
-      src="https://calendar.google.com/calendar/embed?src=vc3cmcth5434mge8vk7uf1qbe4%40group.calendar.google.com&ctz=America%2FSao_Paulo"
-      style={{ border: 0, width: '100vw', height: '100vh' }}
-      width="800"
-      height="600"
-      frameBorder="0"
-      scrolling="no"
-    />
+    <Container>
+      <h1>
+        <img src="/logo/icon.png" /> Agenda
+      </h1>
+      <hr />
+      {days.map(({ day, weekDay, schedules }) => (
+        <Day>
+          <h3>
+            {day} ({weekDay})
+          </h3>
+          <div>
+            {schedules.map(schedule => (
+              <Schedule className={schedule.user}>
+                <small>
+                  {schedule.user} - {schedule.hour}
+                </small>
+                <h4>{schedule.title}</h4>
+              </Schedule>
+            ))}
+          </div>
+        </Day>
+      ))}
+    </Container>
   )
 }
+
+const Schedule = styled.div`
+  padding: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  &.gaby {
+    background-color: rgba(255, 0, 255, 0.31);
+  }
+  &.thay {
+    background-color: rgba(255, 255, 0, 0.31);
+  }
+  &:last-child {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+  }
+  &:first-child {
+    border-top: 2px solid rgba(0, 0, 0, 0.6);
+  }
+`
+
+const Day = styled.div`
+  margin-bottom: 16px;
+  width: 100%;
+  small {
+    color: rgba(0, 0, 0, 0.6);
+    text-transform: capitalize;
+  }
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  h4 {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+  h1 {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #999;
+    width: 100%;
+    padding-bottom: 8px;
+    > img {
+      height: 68px;
+      margin-right: 16px;
+    }
+  }
+  h3 {
+    margin: 0 0 16px 0;
+    padding-left: 8px;
+  }
+`
