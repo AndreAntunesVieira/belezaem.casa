@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const getNextSchedules = async () => {
-  console.log('getNextSchedules')
   const res = await fetch(`/api/next-schedules`)
   const content = await res.json()
-  console.log('getNextSchedules 2', content)
   return content.days
 }
 
@@ -21,17 +19,17 @@ export default function Agenda() {
       </h1>
       <hr />
       {days.map(({ day, weekDay, schedules }) => (
-        <Day>
+        <Day key={day}>
           <h3>
             {day} ({weekDay})
           </h3>
           <div>
-            {schedules.map(schedule => (
-              <Schedule className={schedule.user}>
+            {schedules.map(({ user, hour, title }) => (
+              <Schedule className={user} key={hour}>
                 <small>
-                  {schedule.user} - {schedule.hour}
+                  {user} - {hour}
                 </small>
-                <h4>{schedule.title}</h4>
+                <h4>{title}</h4>
               </Schedule>
             ))}
           </div>
