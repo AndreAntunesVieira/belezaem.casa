@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const getNextSchedules = async () => {
-  const res = await fetch(`/api/next-schedules`)
-  const content = await res.json()
-  return content.days
+  const res = await fetch(`/api/next-schedules`).catch(_e => null)
+  const content = await res.json().catch(_e => null)
+  return content.days || []
 }
 
 export default function Agenda() {

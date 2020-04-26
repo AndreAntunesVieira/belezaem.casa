@@ -1,6 +1,6 @@
 'use strict'
 
-const CACHE_NAME = 'belezaem.casa-1587185972862'
+const CACHE_NAME = 'belezaem.casa-1587185972863'
 const SW_SUPPORTED_PROTOCOL_REGEX = /http(s?):/
 const pageUrls = JSON.parse('["/"]')
 const staticAssets = JSON.parse('["/styles.css"]')
