@@ -86,3 +86,9 @@ h2:after {
 }
 .btn {
 }
+
+@media (max-height: 768px) {
+  body {
+    padding-bottom: 48px;
+  }
+}

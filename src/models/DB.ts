@@ -1,25 +1,31 @@
 import { MongoClient } from 'mongodb'
+import * as url from 'url'
 import { getEnv } from '../helpers/Environment'
-import { promisefy } from '../helpers/helpers/Promises'
+
+let cachedDb = null
+let client = null
 
 export default class DB {
   protected client
   static collection = ''
 
-  constructor() {
-    this.client = new MongoClient(getEnv('MONGODB_URL'), { useNewUrlParser: true })
-  }
-
   async connect() {
-    return promisefy(this.client.connect.bind(this.client))
+    if (client) return client
+    const uri = getEnv('MONGODB_URL')
+    client = await MongoClient.connect(uri, { useNewUrlParser: true })
+    return client
   }
 
-  get collection() {
+  get db() {
+    if (cachedDb) return cachedDb
+    const uri = getEnv('MONGODB_URL')
+    const db = client.db(url.parse(uri).pathname.substr(1))
+    cachedDb = db
+    return db
+  }
+
+  get collection(): any {
     const constructor: any = this.constructor
-    return this.client.db('belezaemcasa').collection(constructor.collection)
-  }
-
-  closeAfter() {
-    setTimeout(() => this.client.close(), 10)
+    return this.db.collection(constructor.collection)
   }
 }
