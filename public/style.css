@@ -84,8 +84,6 @@ h2:after {
 .form-control textarea {
   resize: vertical;
 }
-.btn {
-}
 
 @media (max-height: 768px) {
   body {

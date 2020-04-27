@@ -1,9 +1,17 @@
 import SchedulesDB from '../../models/SchedulesDB'
 
 export default async function fetchNextSchedules(_req, res) {
-  const schedules = await new SchedulesDB().nextSchedules()
-  const days = joinSchedulesByDay(schedules)
-  res.json({ days })
+  try {
+    const schedules = await new SchedulesDB().nextSchedules()
+    const days = joinSchedulesByDay(schedules)
+    res.json({ days })
+  } catch (e) {
+    res.json({
+      days: [],
+      message: e.message,
+      MONGODB_URL: process.env.MONGODB_URL,
+    })
+  }
 }
 
 function joinSchedulesByDay(schedules) {
