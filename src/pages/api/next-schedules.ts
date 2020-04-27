@@ -9,7 +9,7 @@ export default async function fetchNextSchedules(_req, res) {
     res.json({
       days: [],
       message: e.message,
-      MONGODB_URL: process.env.MONGODB_URL,
+      MONGODB: process.env.MONGODB,
     })
   }
 }
