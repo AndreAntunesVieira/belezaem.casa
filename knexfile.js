@@ -1,14 +1,16 @@
 const path = require('path')
 const dotenv = require('dotenv')
+const parsePgUrl = require('pg-connection-string').parse
 
 dotenv.config({ path: path.join(__dirname, '.env') })
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
-
 const defaultConfig = {
   client: 'postgresql',
-  connection: process.env.DATABASE_URL + '?ssl=true',
-  searchPath: ['knex', 'public'],
+  connection: {
+    ssl: true,
+    ...parsePgUrl(process.env.DATABASE_URL),
+  },
+  searchPath: ['public'],
   migrations: {
     directory: 'db/migrations',
     tableName: 'knex_migrations',
