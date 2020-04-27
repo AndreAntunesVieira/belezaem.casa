@@ -3,12 +3,12 @@ import SchedulesDB from '../../models/SchedulesDB'
 export default async function fetchNextSchedules(_req, res) {
   try {
     const schedules = await new SchedulesDB().nextSchedules()
-    console.log(schedules)
     const days = joinSchedulesByDay(schedules)
     res.json({ days })
   } catch (e) {
     console.log(e)
     res.json({
+      days: [],
       error: e.message,
       DATABASE_URL: process.env.DATABASE_URL,
     })
