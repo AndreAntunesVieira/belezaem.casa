@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import CreateScheduleModal from '../components/Modals/CreateScheduleModal'
 
 const getNextSchedules = async () => {
   const res = await fetch(`/api/next-schedules`).catch(_e => null)
@@ -10,8 +11,9 @@ const getNextSchedules = async () => {
 export default function Agenda() {
   const [days, setDays] = useState([])
   const [activeModal, setActiveModal] = useState(false)
+  const updateSchedule = () => getNextSchedules().then(days => setDays(days))
   useEffect(() => {
-    getNextSchedules().then(days => setDays(days))
+    updateSchedule()
   }, [])
   const openScheduleModal = () => {
     setActiveModal(true)
@@ -39,150 +41,13 @@ export default function Agenda() {
           </div>
         </Day>
       ))}
-      {activeModal && (
-        <Modal>
-          <div>
-            <h4>Marcar atendimento</h4>
-
-            <div className="form-control">
-              <label>Qual é o atendimento</label>
-              <input placeholder="Dê um nome para este atendimento" />
-            </div>
-
-            <div className="form-control">
-              <label>Que dia será?</label>
-              <input placeholder="dd/mm/aaaa" type="date" />
-            </div>
-
-            <div className="form-control">
-              <label>Que horas será o atendimento</label>
-              <input placeholder="hh:mm" type="time" />
-            </div>
-            <Button>Salvar</Button>
-          </div>
-        </Modal>
-      )}
+      {activeModal && <CreateScheduleModal setActiveModal={setActiveModal} updateSchedule={updateSchedule} />}
       <Menu>
         <div onClick={() => openScheduleModal()}>Marcar atendimento</div>
       </Menu>
     </Container>
   )
 }
-
-const Modal = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  > div {
-    padding: 16px;
-    max-height: 80%;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
-  }
-`
-
-const Button = styled.button`
-  display: inline-block;
-  margin-bottom: 0;
-  text-align: center;
-  text-transform: uppercase;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  whitespace: nowrap;
-  padding: 6px 12px;
-  font-size: 1.4rem;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  text-decoration: none;
-  user-select: none;
-
-  &,
-  &:active,
-  &.active {
-    &:focus {
-      outline: thin dotted;
-      outline: 5px auto -webkit-focus-ring-color;
-      outline-offset: -2px;
-    }
-  }
-
-  &:hover,
-  &:focus,
-  &.focus {
-    text-decoration: none;
-    color: #fff;
-  }
-
-  &:active,
-  &.active {
-    outline: 0;
-    background-image: none;
-  }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    cursor: not-allowed;
-    pointer-events: none;
-    box-shadow: none;
-  }
-
-  &.btn-xs {
-    padding: 3px 6px;
-    font-size: 1.2rem;
-  }
-
-  &.btn-sm {
-    padding: 4px 8px;
-    font-size: 1.3rem;
-  }
-
-  &.btn-lg {
-    padding: 8px 16px;
-    font-size: 1.6rem;
-  }
-
-  &.btn-primary {
-    //@include btn-variant(#1e88e5, #64b5f6, #42a5f5, #bbdefb, #e3f2fd, #90caf9, #1976d2);
-    //@mixin btn-variant($border, $from, $to, $gloss, $color, $hover-from, $active-border) 
-  }
-  color: var(--btn-color);
-  border-color: var(--btn-border);
-  background: linear-gradient(to bottom, var(--btn-from) 0%, var(--btn-to) 100%);
-  box-shadow: inset 0 1px var(--btn-gross), 0 1px 2px rgba(0,0,0,.2);
-  
-  &:hover,
-  &:focus,
-  &.focus {
-    border-color: var(--btn-to);
-    background: linear-gradient(to bottom, var(--btn-hover-from) 0%, var(--btn-from) 100%);
-    box-shadow: inset 0 1px $color, 0 2px 3px rgba(0,0,0,.2);
-  }
-  &:active,
-  &.active {
-    border-color: var(--btn-active-border);
-    color: var(--btn-gloss);
-    background: linear-gradient(to bottom, var(--btn-to) 0%, var(--btn-border) 100%);
-    box-shadow: inset 0 2px 2px var(--btn-active-border);
-  }
-  
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    background: var(--btn-hover-from);
-    border-color: var(--btn-from);
-  } 
-}
-`
 
 const Menu = styled.div`
   display: flex;

@@ -21,7 +21,7 @@ const Gallery = () => {
         onMouseLeave={() => gallery.onMouseLeave()}
         onMouseMove={e => gallery.onMouseMove(e)}>
         {images.map(post => (
-          <a target="_blank" href={post.link} data-text={post.description}>
+          <a target="_blank" key={post.link} href={post.link} data-text={post.description}>
             <img
               alt={post.description}
               decoding="auto"
