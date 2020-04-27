@@ -9,6 +9,7 @@ export default async function fetchNextSchedules(_req, res) {
   } catch (e) {
     console.log(e)
     res.json({
+      error: e.message,
       DATABASE_URL: process.env.DATABASE_URL,
     })
   }
