@@ -1,9 +1,9 @@
 import DB from './DB'
 
 export default class TestimonialsDB extends DB {
-  static collection = 'testimonials'
+  static tableName = 'testimonials'
+
   async all() {
-    await this.connect()
-    return this.collection.find().toArray()
+    return this.table.select()
   }
 }

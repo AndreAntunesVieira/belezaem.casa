@@ -1,16 +1,15 @@
 import DB from './DB'
 
 export default class SchedulesDB extends DB {
-  static collection = 'schedules'
+  static tableName = 'schedules'
+
   async nextSchedules() {
-    await this.connect()
-    return this.collection
-      .find({ date: { $gt: new Date().toISOString() } })
-      .sort({ date: 1 })
-      .toArray()
+    return this.table
+      .where('date', '>', new Date())
+      .orderBy('date')
   }
+
   async saveSchedule(data) {
-    await this.connect()
-    return this.collection.insert(data)
+    return this.table.insert(data)
   }
 }
