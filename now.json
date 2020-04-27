@@ -4,7 +4,7 @@
   "trailingSlash": false,
 
   "env": {
-    "MONGODB_URI": "@my-mongodb-uri"
+    "MONGODB": "@mongodb-belezaemcasa"
   },
 
   "github": {

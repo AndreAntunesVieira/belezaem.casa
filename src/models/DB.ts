@@ -11,14 +11,14 @@ export default class DB {
 
   async connect() {
     if (client) return client
-    const uri = getEnv('MONGODB_URL')
+    const uri = getEnv('MONGODB')
     client = await MongoClient.connect(uri, { useNewUrlParser: true })
     return client
   }
 
   get db() {
     if (cachedDb) return cachedDb
-    const uri = getEnv('MONGODB_URL')
+    const uri = getEnv('MONGODB')
     const db = client.db(url.parse(uri).pathname.substr(1))
     cachedDb = db
     return db
