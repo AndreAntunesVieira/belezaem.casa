@@ -4,6 +4,8 @@ const parsePgUrl = require('pg-connection-string').parse
 
 dotenv.config({ path: path.join(__dirname, '.env') })
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
+
 const defaultConfig = {
   client: 'postgresql',
   connection: {
