@@ -1,27 +1,13 @@
-
-const CACHE_NAME = 'belezaem.casa-1588455666255'
-const pageUrls = ["/","/agenda"]
-const staticAssets = ["/styles.css","/logo-white-50.png","/whatsapp.png","/fotos/w65xrjq.jpg","/fotos/boca.jpg"]
-const networkOnlyUrls = []
-const networkOnlyUrlsRegex = [/www\.google-analytics\.com\/collect/,/www\.googletagmanager\.com\/gtag\/js/]
-const networkThenCacheUrls = ["/api/testimonials"]
-const networkThenCacheUrlsRegex = []
-
 const SW_SUPPORTED_PROTOCOL_REGEX = /http(s?):/
 
 function preCacheResources() {
   return caches.open(CACHE_NAME).then(function (cache) {
-    // Pre-Cache pages to improve subsequent navigation but don't making it blocking
-    // Avoid extremely large websites from using the end-users data in unexpected amount
     cache.addAll(pageUrls) // Pre-cache all static assets by keeping them as installation dependency
-
     return cache.addAll(staticAssets)
   })
 }
 
 self.addEventListener('install', function (event) {
-  // Let the new worker take over as fast as possible
-  // For quirks refer: https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle#skip_the_waiting_phase
   self.skipWaiting()
   event.waitUntil(
     preCacheResources().catch(function (installErr) {
@@ -45,8 +31,6 @@ function clearOldCache() {
 }
 
 self.addEventListener('activate', function (event) {
-  // Remember to keep this step as lean as possible
-  // Only sutiable for performing stuff that can't be done while the previous worker is running
   event.waitUntil(
     clearOldCache().then(function () {
       clients.claim() // eslint-disable-line no-undef
@@ -59,42 +43,24 @@ function isPageRequest(url) {
 }
 
 function isNetworkOnlyRequest(url, requestMethod) {
-  // Browser extensions don't use the standard `http` and `https` protocols
-  // Refer: https://github.com/GoogleChromeLabs/sw-toolbox/issues/171
-  if (requestMethod !== 'GET' || !SW_SUPPORTED_PROTOCOL_REGEX.test(url.protocol)) {
-    return true
-  }
+  if (requestMethod !== 'GET' || !SW_SUPPORTED_PROTOCOL_REGEX.test(url.protocol)) return true
 
   const urlOrigin = url.origin
   const urlPathName = url.pathname
   const fullUrl = `${urlOrigin}${urlPathName}`
 
-  if (networkOnlyUrls.includes(urlOrigin) || networkOnlyUrls.includes(fullUrl)) {
-    return true
-  }
-
-  if (networkOnlyUrlsRegex.some(regex => regex.test(fullUrl))) {
-    return true
-  }
-
-  return false
+  if (networkOnlyUrls.includes(urlOrigin) || networkOnlyUrls.includes(fullUrl)) return true
+  return networkOnlyUrlsRegex.some(regex => regex.test(fullUrl))
 }
 
 function isNetworkThenCacheRequest(url, requestMethod) {
-  // Browser extensions don't use the standard `http` and `https` protocols
-  // Refer: https://github.com/GoogleChromeLabs/sw-toolbox/issues/171
-  if (requestMethod !== 'GET' || !SW_SUPPORTED_PROTOCOL_REGEX.test(url.protocol)) {
-    return true
-  }
+  if (requestMethod !== 'GET' || !SW_SUPPORTED_PROTOCOL_REGEX.test(url.protocol)) return true
 
   const urlOrigin = url.origin
   const urlPathName = url.pathname
   const fullUrl = `${urlOrigin}${urlPathName}`
 
-  if (networkThenCacheUrls.includes(urlOrigin) || networkThenCacheUrls.includes(fullUrl)) {
-    return true
-  }
-
+  if (networkThenCacheUrls.includes(urlOrigin) || networkThenCacheUrls.includes(fullUrl)) return true
   return networkThenCacheUrlsRegex.some(regex => regex.test(fullUrl))
 }
 
@@ -107,10 +73,7 @@ function handleWithNetworkThenCache(event) {
           return networkResponse
         })
       })
-      .catch(function () {
-        // network failed, try to serve a cached response or offline page if there is one
-        return caches.match(event.request)
-      })
+      .catch(() => caches.match(event.request))
   )
 }
 
@@ -129,11 +92,7 @@ function handleWithCacheThenNetwork(event) {
           )
         })
       })
-      .catch(function (err) {
-        // TODO: respond with `offline.html` as the final fallback for page requests
-        // and use appropriate response for other cases
-        return err
-      })
+      .catch(err => err)
   )
 }
 
@@ -144,13 +103,9 @@ function handleWithNetwork(event) {
 function handleRequests(event) {
   const requestURL = new URL(event.request.url)
 
-  if (isNetworkOnlyRequest(requestURL, event.request.method)) {
-    return handleWithNetwork(event)
-  }
+  if (isNetworkOnlyRequest(requestURL, event.request.method)) return handleWithNetwork(event)
 
   if (isPageRequest(requestURL) || isNetworkThenCacheRequest(requestURL, event.request.method)) {
-    // To avoid serving stale content after a publish
-    // always fetch the markup from origin and use cache only when the user is offline
     return handleWithNetworkThenCache(event)
   }
 

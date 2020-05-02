@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import CreateScheduleModal from '../components/Modals/CreateScheduleModal'
 import Menu from './Menu'
+import A from './common/A'
 
 const getNextSchedules = async () => {
   const res = await fetch(`/api/next-schedules`).catch(_e => null)
@@ -40,6 +41,7 @@ export default function SignedSchedule({ onSignOut }) {
       ))}
       {activeModal && <CreateScheduleModal setActiveModal={setActiveModal} updateSchedule={updateSchedule} />}
       <Menu>
+        <A href="/">Voltar</A>
         <div onClick={() => openScheduleModal()}>Marcar atendimento</div>
         <div onClick={() => onSignOut()}>Sair</div>
       </Menu>
