@@ -84,6 +84,12 @@ h2:after {
 .form-control textarea {
   resize: vertical;
 }
+.flex {
+  display: flex;
+}
+.jc-end {
+  justify-content: flex-end;
+}
 
 @media (max-height: 768px) {
   body {

@@ -16,6 +16,7 @@ export default class SchedulesDB extends DB {
   }
 
   async saveSchedule(data) {
+    console.log('insert', data)
     return this.table.insert(data)
   }
 }

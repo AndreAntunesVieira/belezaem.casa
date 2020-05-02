@@ -1,6 +1,7 @@
 import SchedulesDB from '../../models/SchedulesDB'
+import UserDB from '../../models/UserDB'
 
-export default function schedules(req, res) {
+export default async function schedules(req, res) {
   if (req.method !== 'POST') {
     res.statusCode(404)
     return res.send('')
@@ -8,10 +9,13 @@ export default function schedules(req, res) {
   const data = req.body
   data.date += `T${data.time}:00`
   delete data.time
+  const user: any = await new UserDB().findBySlug(req.body.user)
+  delete data.user
+  data.user_id = user.id
   new SchedulesDB()
-    .saveSchedule(req.body)
+    .saveSchedule(data)
     .then(() => {
-      res.json({})
+      res.json(data)
     })
     .catch(e => {
       console.log(e)
