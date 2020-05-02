@@ -6,7 +6,13 @@ export default class SchedulesDB extends DB {
   async nextSchedules() {
     return this.table
       .where('date', '>', new Date())
+      .innerJoin('users', 'users.id', 'schedules.user_id')
       .orderBy('date')
+      .select({
+        date: 'date',
+        title: 'title',
+        user: 'users.slug',
+      })
   }
 
   async saveSchedule(data) {

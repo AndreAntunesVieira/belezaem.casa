@@ -34,6 +34,6 @@ function joinSchedulesByDay(schedules) {
 
 function getWeekDay(date) {
   const weekDayNumber = new Date(date).getDay()
-  const days = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo']
-  return days[weekDayNumber - 1]
+  const days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
+  return days[weekDayNumber]
 }
