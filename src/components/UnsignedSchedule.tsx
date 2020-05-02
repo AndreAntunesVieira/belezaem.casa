@@ -8,20 +8,25 @@ import Menu from './Menu'
 export default function UnsignedSchedule({ onSignIn }) {
   const slugInput: any = useRef()
   const passwordInput: any = useRef()
+  const [message, setMessage] = useState({ text: '', color: 'Green' })
   const [fetching, setFetching] = useState(false)
   const onSubmit = async e => {
     e.preventDefault()
     setFetching(true)
-    const slug: string = slugInput.current.value
+    setMessage({ text: 'Carregando, aguarde...', color: 'Blue' })
+    const slug: string = slugInput.current.value.toLowerCase()
     const password: string = passwordInput.current.value
     await request('users', { method: 'post', data: { slug, password } })
       .then(user => {
         sessionStorage.setItem('token', user.headers.token)
         sessionStorage.setItem('user', JSON.stringify(user))
-        onSignIn()
+        setMessage({ text: 'Login Realizado com sucesso', color: 'Green' })
+        setTimeout(() => onSignIn(), 300)
       })
-      .catch(_e => {
-        console.log(_e)
+      .catch(e => {
+        const text: string = e.message
+        setMessage({ text, color: 'Red' })
+        console.log(e)
       })
       .then(() => setFetching(false))
   }
@@ -36,6 +41,7 @@ export default function UnsignedSchedule({ onSignIn }) {
           <input name="password" placeholder="senha" type="password" ref={passwordInput} />
         </div>
         <div className="form-control flex jc-end">
+          <small className={`Color${message.color}`}>{message.text}</small>
           <Button className="btn-success" disabled={fetching}>
             Entrar
           </Button>

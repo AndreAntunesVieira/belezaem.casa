@@ -12,7 +12,7 @@ const saveSchedule = async data => {
   return res.json().catch(_e => null)
 }
 
-const CreateScheduleModal = ({ setActiveModal, updateSchedule }) => {
+const CreateScheduleModal = ({ setActiveModal, updateSchedule, user }) => {
   const onSchedule = e => {
     e.preventDefault()
     const data = serializeForm(e.target)
@@ -22,8 +22,7 @@ const CreateScheduleModal = ({ setActiveModal, updateSchedule }) => {
     if (!data.date) return alert(`Data do atendimento faltando, ${sufix}`)
     if (!data.time) return alert(`Horário do atendimento faltando, ${sufix}`)
     setActiveModal(false)
-    saveSchedule(data)
-      .then(() => updateSchedule())
+    saveSchedule(data).then(() => updateSchedule())
     return data
   }
   return (
@@ -33,11 +32,16 @@ const CreateScheduleModal = ({ setActiveModal, updateSchedule }) => {
 
         <div className="form-control">
           <label>Quem fará o atendimento?</label>
-          <select name="user">
+          <select name="user" defaultValue={user.slug}>
             <option value="">Escolha</option>
             <option value="gaby">Gaby</option>
             <option value="thay">Thay</option>
           </select>
+        </div>
+
+        <div className="form-control">
+          <label>Nome da cliente</label>
+          <textarea placeholder="Digite o nome" name="client" />
         </div>
 
         <div className="form-control">

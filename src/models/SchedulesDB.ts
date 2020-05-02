@@ -11,12 +11,12 @@ export default class SchedulesDB extends DB {
       .select({
         date: 'date',
         title: 'title',
+        client: 'client',
         user: 'users.slug',
       })
   }
 
   async saveSchedule(data) {
-    console.log('insert', data)
     return this.table.insert(data)
   }
 }

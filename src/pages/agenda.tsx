@@ -32,7 +32,7 @@ export default function Agenda() {
       <hr />
       {fetched && (
         <>
-          {user && <SignedSchedule onSignOut={onSignOut} />}
+          {user && <SignedSchedule onSignOut={onSignOut} user={user}/>}
           {!user && <UnsignedSchedule onSignIn={onSignIn} />}
         </>
       )}

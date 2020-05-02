@@ -76,6 +76,7 @@ h2:after {
   width: 100%;
   border: none;
   border-bottom: 1px solid var(--main-color);
+  background-color: white;
   height: 30px;
   padding-left: 4px;
   font-size: 14px;
@@ -89,6 +90,19 @@ h2:after {
 }
 .jc-end {
   justify-content: flex-end;
+}
+
+.ColorRed {
+  color: #ed4343;
+}
+.ColorGreen {
+  color: #17c614;
+}
+.ColorBlue {
+  color: #4343ed;
+}
+.P16 {
+  padding: 16px;
 }
 
 @media (max-height: 768px) {

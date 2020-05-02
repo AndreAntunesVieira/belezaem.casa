@@ -6,11 +6,18 @@ export default async function fetchNextSchedules(_req, res) {
     const days = joinSchedulesByDay(schedules)
     res.json({ days })
   } catch (e) {
+    if (e.message.match(/too many connections/)) {
+      res.status(400)
+      return res.json({
+        days: [],
+        error: 'Site sobrecarregado, tente novamente em 1 minuto',
+      })
+    }
     console.log(e)
+    res.status(400)
     res.json({
       days: [],
       error: e.message,
-      DATABASE_URL: process.env.DATABASE_URL,
     })
   }
 }
