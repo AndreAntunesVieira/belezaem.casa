@@ -21,6 +21,9 @@ const Menu = styled.div`
     border-left: 1px solid rgba(0, 0, 0, 0.1);
     color: rgba(0, 0, 0, 0.8);
   }
+  @media (min-width: 768px) {
+    display: none;
+  }
 `
 
 export default Menu
