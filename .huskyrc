@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "yarn update-cache"
+    "pre-commit": "yarn update-cache && git add public/sw.js"
   }
 }
