@@ -12,8 +12,9 @@ const saveSchedule = async data => {
   return res.json().catch(_e => null)
 }
 
-const CreateScheduleModal = ({ setActiveModal, updateSchedule, user }) => {
+const CreateScheduleModal = ({ setActiveModal, updateSchedule, user, setFetching }) => {
   const onSchedule = e => {
+    setFetching(true)
     e.preventDefault()
     const data = serializeForm(e.target)
     const sufix = 'preencha todos os campos'

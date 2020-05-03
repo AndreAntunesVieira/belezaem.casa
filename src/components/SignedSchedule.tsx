@@ -4,6 +4,8 @@ import CreateScheduleModal from '../components/Modals/CreateScheduleModal'
 import Menu from './Menu'
 import A from './common/A'
 import request from '../helpers/Request'
+import Notification from './Notification'
+import FullNotification from './FullNotification'
 
 export default function SignedSchedule({ onSignOut, user }) {
   const [days, setDays] = useState([])
@@ -47,15 +49,20 @@ export default function SignedSchedule({ onSignOut, user }) {
         </Day>
       ))}
       {fetching ? (
-        <div className="ColorBlue P16">Carregando novos atendimentos...</div>
+        <FullNotification className="ColorBlue P16">Carregando novos atendimentos...</FullNotification>
       ) : (
         <>
-          {days.length === 0 && <div className="ColorRed P16">Não há atendimentos previstos</div>}
-          {error && <div className="ColorRed P16">{error}</div>}
+          {days.length === 0 && <Notification className="ColorRed P16">Não há atendimentos previstos</Notification>}
+          {error && <Notification className="ColorRed P16">{error}</Notification>}
         </>
       )}
       {activeModal && (
-        <CreateScheduleModal user={user} setActiveModal={setActiveModal} updateSchedule={updateSchedule} />
+        <CreateScheduleModal
+          user={user}
+          setActiveModal={setActiveModal}
+          setFetching={setFetching}
+          updateSchedule={updateSchedule}
+        />
       )}
       <Menu>
         <A href="/">Voltar</A>
