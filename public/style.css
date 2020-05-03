@@ -104,7 +104,9 @@ h2:after {
 .P16 {
   padding: 16px;
 }
-
+.MR8 {
+  margin-right: 8px;
+}
 @media (max-height: 768px) {
   body {
     padding-bottom: 48px;

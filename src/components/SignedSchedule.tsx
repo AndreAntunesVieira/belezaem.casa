@@ -6,12 +6,17 @@ import A from './common/A'
 import request from '../helpers/Request'
 import Notification from './Notification'
 import FullNotification from './FullNotification'
+import EditScheduleModal from './Modals/EditScheduleModal'
 
 export default function SignedSchedule({ onSignOut, user }) {
   const [days, setDays] = useState([])
-  const [activeModal, setActiveModal] = useState(false)
-  const [fetching, setFetching] = useState(false)
+  const [addModal, setAddModal] = useState(false)
+  const [editModal, setEditModal] = useState(null)
+  const [fetching, setFetching] = useState(true)
   const [error, setError] = useState(false)
+  const openScheduleEditModal = schedule => {
+    setEditModal(schedule)
+  }
   const updateSchedule = async () => {
     setFetching(true)
     return request(`next-schedules`)
@@ -26,7 +31,7 @@ export default function SignedSchedule({ onSignOut, user }) {
     updateSchedule()
   }, [])
   const openScheduleModal = () => {
-    setActiveModal(true)
+    setAddModal(true)
   }
   return (
     <>
@@ -36,13 +41,13 @@ export default function SignedSchedule({ onSignOut, user }) {
             {day} ({weekDay})
           </h3>
           <div>
-            {schedules.map(({ user, hour, title, client }) => (
-              <Schedule className={user} key={hour}>
+            {schedules.map((schedule: any, key) => (
+              <Schedule className={schedule.user} key={key} onClick={() => openScheduleEditModal(schedule)}>
                 <small>
-                  {user} - {hour}
+                  {schedule.user} - {schedule.hour}
                 </small>
-                <h4>{title}</h4>
-                <div>Cliente: {client}</div>
+                <h4>{schedule.title}</h4>
+                <div>Cliente: {schedule.client}</div>
               </Schedule>
             ))}
           </div>
@@ -56,10 +61,18 @@ export default function SignedSchedule({ onSignOut, user }) {
           {error && <Notification className="ColorRed P16">{error}</Notification>}
         </>
       )}
-      {activeModal && (
+      {addModal && (
         <CreateScheduleModal
           user={user}
-          setActiveModal={setActiveModal}
+          setActiveModal={setAddModal}
+          setFetching={setFetching}
+          updateSchedule={updateSchedule}
+        />
+      )}
+      {editModal && (
+        <EditScheduleModal
+          schedule={editModal}
+          setActiveModal={setEditModal}
           setFetching={setFetching}
           updateSchedule={updateSchedule}
         />

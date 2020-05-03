@@ -10,7 +10,7 @@ export default async function fetchNextSchedules(_req, res) {
       res.status(400)
       return res.json({
         days: [],
-        error: 'Site sobrecarregado, tente novamente em 1 minuto',
+        error: 'Agenda sobrecarregada, tente novamente em 1 minuto',
       })
     }
     console.log(e)
@@ -21,6 +21,9 @@ export default async function fetchNextSchedules(_req, res) {
     })
   }
 }
+//*y&Cb!KSkPd2DVfX
+
+//
 
 function joinSchedulesByDay(schedules) {
   const days = []

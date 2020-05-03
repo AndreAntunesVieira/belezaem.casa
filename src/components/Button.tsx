@@ -9,7 +9,7 @@ const Button = styled.button`
   --btn-hover-from: #90caf9;
   --btn-active-border: #1976d2;
 
-  display: inline-block;
+  display: inline-flex;
   margin-bottom: 0;
   text-align: center;
   text-transform: uppercase;
@@ -17,9 +17,9 @@ const Button = styled.button`
   cursor: pointer;
   background-image: none;
   whitespace: nowrap;
-  padding: 6px 12px;
-  font-size: 1.4rem;
-  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 1.2rem;
+  border-radius: 4px;
   border: 1px solid transparent;
   text-decoration: none;
   user-select: none;
@@ -27,7 +27,8 @@ const Button = styled.button`
   border-color: var(--btn-border);
   background: linear-gradient(to bottom, var(--btn-from) 0%, var(--btn-to) 100%);
   box-shadow: inset 0 1px var(--btn-gross), 0 1px 2px rgba(0, 0, 0, 0.2);
-
+  align-items: center;
+  justify-content: center;
   &,
   &:active,
   &.active {
@@ -58,22 +59,7 @@ const Button = styled.button`
     pointer-events: none;
     box-shadow: none;
   }
-
-  &.btn-xs {
-    padding: 3px 6px;
-    font-size: 1.2rem;
-  }
-
-  &.btn-sm {
-    padding: 4px 8px;
-    font-size: 1.3rem;
-  }
-
-  &.btn-lg {
-    padding: 8px 16px;
-    font-size: 1.6rem;
-  }
-
+  
   &:hover,
   &:focus,
   &.focus {

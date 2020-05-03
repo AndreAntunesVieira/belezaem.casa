@@ -14,6 +14,7 @@ export default class SchedulesDB extends DB {
         client: 'client',
         user: 'users.slug',
       })
+      .then(this.disconnect)
   }
 
   async saveSchedule(data) {
