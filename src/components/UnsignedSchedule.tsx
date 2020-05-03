@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import A from './common/A'
 import Button from './Button'
@@ -48,7 +48,7 @@ export default function UnsignedSchedule({ onSignIn }) {
         </div>
       </Form>
       <Menu>
-        <A href="/">Voltar</A>
+        <A className="MainMenuItem" href="/">Voltar</A>
       </Menu>
     </>
   )

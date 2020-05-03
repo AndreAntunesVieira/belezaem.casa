@@ -79,7 +79,7 @@ export default function SignedSchedule({ onSignOut, user }) {
       )}
       <Menu>
         <A href="/">Voltar</A>
-        <div onClick={() => openScheduleModal()}>Marcar atendimento</div>
+        <div className="MainMenuItem" onClick={() => openScheduleModal()}>Marcar atendimento</div>
         <div onClick={() => onSignOut()}>Sair</div>
       </Menu>
     </>

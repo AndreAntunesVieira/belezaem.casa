@@ -21,6 +21,12 @@ const Menu = styled.div`
     border-left: 1px solid rgba(0, 0, 0, 0.1);
     color: rgba(0, 0, 0, 0.8);
   }
+  .MainMenuItem {
+    background: var(--secondary-color);
+    color: white;
+    font-weight: bold;
+    flex-basis: 120px;
+  }
   @media (min-width: 768px) {
     display: none;
   }
