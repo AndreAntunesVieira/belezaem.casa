@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from '../Button'
 import ModalBase from './ModalBase'
+import request from '../../helpers/Request'
 
 const saveSchedule = async data => {
   const res = await fetch(`/api/schedules`, {
@@ -15,6 +16,14 @@ const saveSchedule = async data => {
 const EditScheduleModal = ({ setActiveModal, updateSchedule, setFetching, schedule }) => {
   const date = schedule.date.replace(/T.*/, '')
   const hour = schedule.date.replace(/.*T(\d{2}:\d{2}).*/, '$1')
+  const onDelete = async e => {
+    e.preventDefault()
+    setFetching(true)
+    setActiveModal(false)
+    await request(`schedules/${schedule.id}`, { method: 'delete' })
+    setFetching(false)
+    updateSchedule()
+  }
   const onSchedule = e => {
     setFetching(true)
     e.preventDefault()
@@ -62,7 +71,9 @@ const EditScheduleModal = ({ setActiveModal, updateSchedule, setFetching, schedu
           <input placeholder="hh:mm" type="time" name="time" defaultValue={hour} />
         </div>
         <div className="flex jc-end">
-          <Button className="btn-danger MR8">Apagar</Button>
+          <Button className="btn-danger MR8" onClick={onDelete}>
+            Apagar
+          </Button>
           <Button className="btn-success">Salvar</Button>
         </div>
       </form>
