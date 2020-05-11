@@ -19,7 +19,7 @@ export default function SignedSchedule({ onSignOut, user }) {
   }
   const updateSchedule = async () => {
     setFetching(true)
-    return request(`next-schedules`)
+    return request('schedules/next')
       .then(({ days }) => setDays(days))
       .catch(e => {
         setError(e.error)

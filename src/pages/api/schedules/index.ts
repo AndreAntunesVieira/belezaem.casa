@@ -1,7 +1,7 @@
-import SchedulesDB from '../../models/SchedulesDB'
-import UserDB from '../../models/UserDB'
+import SchedulesDB from '../../../models/SchedulesDB'
+import UserDB from '../../../models/UserDB'
 
-export default async function schedules(req, res) {
+export default async function index(req, res) {
   if (req.method !== 'POST') {
     res.statusCode(404)
     return res.send('')

@@ -1,8 +1,8 @@
 
-const CACHE_NAME = 'belezaem.casa-1589237347888'
+const CACHE_NAME = 'belezaem.casa-1589254837174'
 const pageUrls = ["/","/agenda"]
 const staticAssets = ["/styles.css","/logo-white-50.png","/whatsapp.png","/fotos/w65xrjq.jpg","/fotos/boca.jpg"]
-const networkOnlyUrls = ["/api/schedules"]
+const networkOnlyUrls = ["/api/schedules/next"]
 const networkOnlyUrlsRegex = [/www\.google-analytics\.com\/collect/,/www\.googletagmanager\.com\/gtag\/js/]
 const networkThenCacheUrls = ["/api/testimonials"]
 const networkThenCacheUrlsRegex = []
