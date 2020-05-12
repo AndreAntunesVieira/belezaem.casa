@@ -5,7 +5,7 @@ export default class SchedulesDB extends DB {
 
   async nextSchedules() {
     return this.table
-      .where('date', '>', new Date())
+      .whereRaw('date >= current_date')
       .innerJoin('users', 'users.id', 'schedules.user_id')
       .orderBy('date')
       .select({

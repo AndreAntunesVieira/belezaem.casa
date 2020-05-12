@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import classNames from 'classnames'
 import styled from 'styled-components'
 import CreateScheduleModal from '../components/Modals/CreateScheduleModal'
 import Menu from './Menu'
@@ -20,7 +21,8 @@ export default function SignedSchedule({ onSignOut, user }) {
   const updateSchedule = async () => {
     setFetching(true)
     return request('schedules/next')
-      .then(({ days }) => setDays(days))
+      .then(parseDays)
+      .then(days => setDays(days))
       .catch(e => {
         setError(e.error)
       })
@@ -42,7 +44,12 @@ export default function SignedSchedule({ onSignOut, user }) {
           </h3>
           <div>
             {schedules.map((schedule: any, key) => (
-              <Schedule className={schedule.user} key={key} onClick={() => openScheduleEditModal(schedule)}>
+              <Schedule
+                className={classNames(schedule.user, {
+                  ScheduleDone: schedule.done,
+                })}
+                key={key}
+                onClick={() => openScheduleEditModal(schedule)}>
                 <small>
                   {schedule.user} - {schedule.hour}
                 </small>
@@ -79,12 +86,25 @@ export default function SignedSchedule({ onSignOut, user }) {
       )}
       <Menu>
         <A href="/">Voltar</A>
-        <div className="MainMenuItem" onClick={() => openScheduleModal()}>Marcar atendimento</div>
+        <div className="MainMenuItem" onClick={() => openScheduleModal()}>
+          Marcar atendimento
+        </div>
         <div onClick={() => onSignOut()}>Sair</div>
       </Menu>
     </>
   )
 }
+
+const parseDays = ({ days }) =>
+  days.map((day: any) => {
+    day.schedules.forEach(schedule => {
+      console.log(schedule)
+      const datetime = new Date(schedule.date)
+      datetime.setMinutes(datetime.getMinutes() + datetime.getTimezoneOffset())
+      schedule.done = datetime < new Date()
+    })
+    return day
+  })
 
 const Schedule = styled.div`
   padding: 8px;
@@ -101,6 +121,22 @@ const Schedule = styled.div`
   &:last-child {
     border-bottom: 2px solid rgba(0, 0, 0, 0.6);
     margin-bottom: 32px;
+  }
+  &.ScheduleDone {
+    opacity: 0.4;
+    position: relative;
+    &:before {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      content: 'Em antendimento ou já passou';
+      color: red;
+      display: block;
+      border: 1px solid red;
+      border-radius: 4px;
+      padding: 4px;
+      font-size: 0.7em;
+    }
   }
 `
 
