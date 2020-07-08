@@ -2,6 +2,7 @@ import knex from 'knex'
 import * as knexfile from '../../knexfile'
 
 const environment = process.env.NODE_ENV || 'development'
+let database
 
 export default class DB {
   static tableName = ''
@@ -13,9 +14,9 @@ export default class DB {
   }
 
   get database() {
-    if (this._database) return this._database
-    this._database = knex(knexfile[environment])
-    return this._database
+    if (database) return database
+    database = knex(knexfile[environment])
+    return database
   }
 
   disconnect = async content => {
