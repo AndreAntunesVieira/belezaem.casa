@@ -4,7 +4,6 @@ export default class TestimonialsDB extends DB {
   static tableName = 'testimonials'
 
   async all() {
-    return this.table.select()
-      .then(this.disconnect)
+    return this.table.select().then(this.disconnect)
   }
 }

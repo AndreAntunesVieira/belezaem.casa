@@ -75,8 +75,7 @@ const InstagramGallery = [
   },
   {
     link: ' https://www.instagram.com/p/B9b0LNgHArM/?igshid=1gz8tu4cl77fk',
-    description:
-      '✨ Alongamento de cílios volume brasileiro ✨. Passe pro lado ➡️ e veja a PERFEIÇÃO desse olhar 😍.…',
+    description: '✨ Alongamento de cílios volume brasileiro ✨. Passe pro lado ➡️ e veja a PERFEIÇÃO desse olhar 😍.…',
     image: {
       src:
         'https://instagram.fpoa27-1.fna.fbcdn.net/v/t51.2885-15/e35/87346400_524285011545065_5311243768890319859_n.jpg?_nc_ht=instagram.fpoa27-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=By2YkoxhT40AX-DzuV_&oh=a371571b27961d65307d08a0ff9fbf44&oe=5F2E99A1',
@@ -86,8 +85,7 @@ const InstagramGallery = [
   },
   {
     link: ' https://www.instagram.com/p/B7uJlqYhHoZ/?igshid=z5aupqfqkfcn',
-    description:
-      'Maquiagem ok 👌🏽 . Sextou MARAVILHOSAAAAAA @fernandalorencet 😍💋 . . . . . . . . #makeup #maquiagem…',
+    description: 'Maquiagem ok 👌🏽 . Sextou MARAVILHOSAAAAAA @fernandalorencet 😍💋 . . . . . . . . #makeup #maquiagem…',
     image: {
       src:
         'https://instagram.fpoa27-1.fna.fbcdn.net/v/t51.2885-15/e35/82646797_166343568017486_1301344916782784142_n.jpg?_nc_ht=instagram.fpoa27-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=U_UmU1R7_UQAX9VRxgA&oh=dc450ccb968939aa01f009e6c534590e&oe=5F3182F8',
@@ -107,8 +105,7 @@ const InstagramGallery = [
   },
   {
     link: ' https://www.instagram.com/p/B1wq0yOB9H4/?igshid=1bzjfvk2xlp9t',
-    description:
-      '#tbt do curso de produção de moda para fotografia, ministrado por @haisahofmann_ e @cavalheirolucas…',
+    description: '#tbt do curso de produção de moda para fotografia, ministrado por @haisahofmann_ e @cavalheirolucas…',
     image: {
       src:
         'https://instagram.fpoa27-1.fna.fbcdn.net/v/t51.2885-15/e35/68687956_496865111094237_8795819830208355984_n.jpg?_nc_ht=instagram.fpoa27-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=-SaeXaqLsw4AX9tjNCm&oh=00a40edce7b2e40e63e8b54de9bb702b&oe=5F2F56C5',
@@ -118,8 +115,7 @@ const InstagramGallery = [
   },
   {
     link: ' https://www.instagram.com/p/B3A1gFjBQTU/?igshid=1sinagaoeccps',
-    description:
-      'Makeup Rosé ❇️✨ . . . . . . . . #makeup #makeprofissional #makeperfeita #makeincrivel #supermarke…',
+    description: 'Makeup Rosé ❇️✨ . . . . . . . . #makeup #makeprofissional #makeperfeita #makeincrivel #supermarke…',
     image: {
       src:
         'https://instagram.fpoa27-1.fna.fbcdn.net/v/t51.2885-15/e35/70135309_421076008540997_4664381498302929284_n.jpg?_nc_ht=instagram.fpoa27-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=IGl8wnhCrSwAX-OPkXS&oh=64deb5d05dd9fea538d28ae05917b2ad&oe=5F302A7D',

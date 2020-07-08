@@ -9,6 +9,8 @@
     "start": "next start",
     "dev": "next dev --port 3002",
     "build": "next build",
+    "lint": "prettier --write 'src/**/*.{t,j}s'",
+    "lint:check": "prettier -l 'src/**/*.{t,j}s'",
     "update-cache": "node bin/scripts/update-cache.js",
     "migrate": "knex migrate:latest",
     "migrate:rollback": "knex migrate:rollback",

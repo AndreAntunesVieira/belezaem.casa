@@ -6,7 +6,6 @@ let database
 
 export default class DB {
   static tableName = ''
-  private _database
 
   get table(): any {
     const constructor: any = this.constructor
