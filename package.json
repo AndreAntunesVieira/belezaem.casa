@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "next build && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "start": "cross-env NODE_ENV=production node dist/src/server/index.js",
     "lint": "prettier --write 'src/**/*.{t,j}s'",
     "lint:check": "prettier -l 'src/**/*.{t,j}s'",
     "update-cache": "node bin/scripts/update-cache.js",
