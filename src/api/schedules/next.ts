@@ -1,4 +1,4 @@
-import SchedulesDB from '../../../models/SchedulesDB'
+import SchedulesDB from '../../models/SchedulesDB'
 
 export default async function fetchNextSchedules(_req, res) {
   try {

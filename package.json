@@ -6,9 +6,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "next start",
-    "dev": "next dev --port 3002",
-    "build": "next build",
+    "dev": "nodemon",
+    "build": "next build && tsc --project tsconfig.server.json",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "lint": "prettier --write 'src/**/*.{t,j}s'",
     "lint:check": "prettier -l 'src/**/*.{t,j}s'",
     "update-cache": "node bin/scripts/update-cache.js",
@@ -19,13 +19,18 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "fastify": "^3.2.1",
+    "fastify-formbody": "^4.0.3",
     "husky": "^4.2.5",
     "knex": "^0.21.0",
     "next": "^9.3.5",
     "pg": "^8.0.3",
     "pg-connection-string": "^2.2.0",
+    "prismic-dom": "^2.2.3",
+    "prismic-javascript": "^3.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.1.0",
@@ -35,8 +40,11 @@
   "devDependencies": {
     "@types/node": "^13.13.0",
     "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "prettier": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.4",
+    "ts-node": "^8.10.2"
   }
 }

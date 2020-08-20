@@ -1,4 +1,4 @@
-import SchedulesDB from '../../../models/SchedulesDB'
+import SchedulesDB from '../../models/SchedulesDB'
 
 export default async function schedules(req, res) {
   if (req.method !== 'DELETE') {

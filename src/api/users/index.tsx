@@ -1,5 +1,5 @@
-import UserDB from '../../../models/UserDB'
-import ServerResponses from '../../../helpers/ServerResponses'
+import UserDB from '../../models/UserDB'
+import ServerResponses from '../../helpers/ServerResponses'
 
 export default async function signInUser(req, res) {
   if (req.method !== 'POST') return new ServerResponses(req, res).sendMethodNotAllowed()
