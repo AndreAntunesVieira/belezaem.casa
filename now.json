@@ -1,7 +1,7 @@
 {
   "regions": ["gru1"],
   "public": true,
-  "trailingSlash": false,
+  "trailingSlash": true,
 
   "env": {
     "MONGODB": "@mongodb-belezaemcasa"
