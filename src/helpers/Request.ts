@@ -3,6 +3,10 @@ const request = async (route, options: any = {}) => {
     options.body = JSON.stringify(options.data)
     delete options.data
   }
+  options.headers = {
+    ...options.headers,
+    'Content-Type': 'application/json',
+  }
   const res = await fetch(`/api/${route}`, options).catch(_e => null)
   let content = await res.json().catch(_e => null)
   const empty = !content

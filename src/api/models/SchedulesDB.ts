@@ -1,6 +1,6 @@
-import DB from './DB'
+import ModelBase from '../vendor/ModelBase'
 
-export default class SchedulesDB extends DB {
+export default class SchedulesDB extends ModelBase {
   static tableName = 'schedules'
 
   async nextSchedules() {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 const getAllTestimonials = async () => {
-  const res = await fetch(`/api/testimonials`)
+  const res = await fetch(`/api/testimonials`, { headers: {'Content-Type': 'application/json'}})
   const content = await res.json()
   console.log(content)
 }

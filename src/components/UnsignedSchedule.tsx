@@ -2,8 +2,8 @@ import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import A from './common/A'
 import Button from './Button'
-import request from '../helpers/Request'
 import Menu from './Menu'
+import request from '../helpers/Request'
 
 export default function UnsignedSchedule({ onSignIn }) {
   const slugInput: any = useRef()
@@ -16,7 +16,7 @@ export default function UnsignedSchedule({ onSignIn }) {
     setMessage({ text: 'Carregando, aguarde...', color: 'Blue' })
     const slug: string = slugInput.current.value.toLowerCase()
     const password: string = passwordInput.current.value
-    await request('users', { method: 'post', data: { slug, password } })
+    await request('users/sign-in', { method: 'post', data: { slug, password } })
       .then(user => {
         sessionStorage.setItem('token', user.headers.token)
         sessionStorage.setItem('user', JSON.stringify(user))

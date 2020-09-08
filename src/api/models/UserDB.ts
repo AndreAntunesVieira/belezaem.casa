@@ -1,7 +1,7 @@
-import DB from './DB'
-import { hideObjectProps } from '../helpers/Object'
+import ModelBase from '../vendor/ModelBase'
+import { hideObjectProps } from '../../helpers/Object'
 
-export default class UserDB extends DB {
+export default class UserDB extends ModelBase {
   static tableName = 'users'
 
   async findBySlug(slug) {

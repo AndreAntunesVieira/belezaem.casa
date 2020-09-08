@@ -1,9 +1,9 @@
 import knex from 'knex'
-import * as knexfile from '../../knexfile'
+import * as knexfile from '../../../knexfile'
 
 const environment = process.env.NODE_ENV || 'development'
 
-export default class DB {
+export default class ModelBase {
   static tableName = ''
 
   get table(): any {

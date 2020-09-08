@@ -1,6 +1,6 @@
-import DB from './DB'
+import ModelBase from '../vendor/ModelBase'
 
-export default class TestimonialsDB extends DB {
+export default class TestimonialsDB extends ModelBase {
   static tableName = 'testimonials'
 
   async all() {

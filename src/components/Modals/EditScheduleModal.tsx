@@ -8,7 +8,7 @@ const saveSchedule = async data => {
   const res = await fetch(`/api/schedules`, {
     method: 'post',
     body: JSON.stringify(data),
-    headers: { 'content-type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' },
   }).catch(_e => null)
   return res.json().catch(_e => null)
 }
