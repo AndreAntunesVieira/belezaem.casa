@@ -20,7 +20,9 @@ export default class SchedulesController extends BaseController {
     delete data.time
     const user: any = await this.UserDB.findBySlug(this.body.user)
     delete data.user
+    delete data.created_at
     data.user_id = user.id
+    data.updated_at = new Date()
     return this.SchedulesDB.update(data)
   }
 
@@ -33,12 +35,10 @@ export default class SchedulesController extends BaseController {
   }
 
   async delete() {
-    try{
-
+    try {
       await this.SchedulesDB.delete(Number(this.routeParams.id))
       return { message: 'deleted' }
-    }
-    catch(e){
+    } catch (e) {
       console.log(e)
       this.code(400)
       return { message: 'error' }
