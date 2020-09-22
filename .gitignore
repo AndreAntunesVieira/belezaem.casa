@@ -14,6 +14,8 @@
 
 # production
 /build
+/dist
+.forever
 
 # misc
 .DS_Store
@@ -33,8 +35,6 @@ yarn-error.log*
 .now
 .next
 
-# project
-.forever
+# development
 /.idea
-/dist
 /design

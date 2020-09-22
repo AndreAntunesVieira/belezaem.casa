@@ -8,11 +8,11 @@ export default function vendorMiddleware(server) {
   routes.map(({ httpMethod, path, controller }) => {
     const [controllerClass, controllerMethod] = controller.split(/[.@]/)
     server[httpMethod](`/api/${path}`, async (req, res) => {
-      const controller = new controllers[controllerClass]()
-      controller.setRequest(req)
-      controller.setReply(res)
-      controller.setModels(models)
-      await controller[controllerMethod]()
+      const controllerInstance = new controllers[controllerClass]()
+      controllerInstance.setRequest(req)
+      controllerInstance.setReply(res)
+      controllerInstance.setModels(models)
+      await controllerInstance[controllerMethod]()
         .then(result => res.json(result))
         .catch(e => {
           console.log('error', e)

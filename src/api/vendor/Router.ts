@@ -1,27 +1,17 @@
 export default class Router {
   private routes = []
 
-  add(httpMethod, options) {
-    this.routes.push({ httpMethod, ...options })
+  addRoute(httpMethod){
+    return (path, controller, options = {}) => this.routes.push({ httpMethod, path, controller, ...options })
   }
-  get(path, controller) {
-    this.add('get', { path, controller })
-  }
-  post(path, controller) {
-    this.add('post', { path, controller })
-  }
-  put(path, controller) {
-    this.add('put', { path, controller })
-  }
-  delete(path, controller) {
-    this.add('delete', { path, controller })
-  }
-  options(path, controller) {
-    this.add('options', { path, controller })
-  }
-  patch(path, controller) {
-    this.add('patch', { path, controller })
-  }
+
+  public get = this.addRoute('get')
+  public post = this.addRoute('post')
+  public put = this.addRoute('put')
+  public options = this.addRoute('options')
+  public patch = this.addRoute('patch')
+  public delete = this.addRoute('delete')
+
   map(callback) {
     return this.routes.map(callback)
   }
