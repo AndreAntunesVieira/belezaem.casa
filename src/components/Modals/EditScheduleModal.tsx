@@ -4,9 +4,9 @@ import Button from '../Button'
 import ModalBase from './ModalBase'
 import request from '../../helpers/Request'
 
-const saveSchedule = async data => {
-  const res = await fetch(`/api/schedules`, {
-    method: 'post',
+const saveSchedule = async (id, data) => {
+  const res = await fetch(`/api/schedules/${id}`, {
+    method: 'put',
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' },
   }).catch(_e => null)
@@ -34,7 +34,7 @@ const EditScheduleModal = ({ setActiveModal, updateSchedule, setFetching, schedu
     if (!data.date) return alert(`Data do atendimento faltando, ${sufix}`)
     if (!data.time) return alert(`Horário do atendimento faltando, ${sufix}`)
     setActiveModal(false)
-    saveSchedule(data).then(() => updateSchedule())
+    saveSchedule(schedule.id, data).then(() => updateSchedule())
     return data
   }
   return (
