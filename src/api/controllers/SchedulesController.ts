@@ -15,7 +15,7 @@ export default class SchedulesController extends BaseController {
   }
 
   async edit() {
-    const data = await this.SchedulesDB.find(Number(this.queryParams.id))
+    const data = await this.SchedulesDB.find(Number(this.routeParams.id))
     data.date += `T${data.time}:00`
     delete data.time
     const user: any = await this.UserDB.findBySlug(this.body.user)
@@ -34,7 +34,7 @@ export default class SchedulesController extends BaseController {
   async delete() {
     try{
 
-      await this.SchedulesDB.delete(Number(this.queryParams.id))
+      await this.SchedulesDB.delete(Number(this.routeParams.id))
       return { message: 'deleted' }
     }
     catch(e){
