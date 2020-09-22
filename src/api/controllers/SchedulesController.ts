@@ -22,7 +22,7 @@ export default class SchedulesController extends BaseController {
     delete data.user
     delete data.created_at
     data.user_id = user.id
-    data.updated_at = new Date()
+    data.updated_at = new Date().toISOString()
     return this.SchedulesDB.update(data)
   }
 
