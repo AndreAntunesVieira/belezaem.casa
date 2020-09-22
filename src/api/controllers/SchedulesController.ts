@@ -21,6 +21,7 @@ export default class SchedulesController extends BaseController {
     const user: any = await this.UserDB.findBySlug(this.body.user)
     delete data.user
     delete data.created_at
+    delete data.deleted_at
     data.user_id = user.id
     data.updated_at = new Date().toISOString()
     return this.SchedulesDB.update(data)
