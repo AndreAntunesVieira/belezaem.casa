@@ -16,6 +16,7 @@ export default class SchedulesController extends BaseController {
 
   async next() {
     const schedules = await this.SchedulesDB.nextSchedules()
+    this.setHeader('Cache-Control', 'no-cache')
     const days = this.joinSchedulesByDay(schedules)
     return { days }
   }
