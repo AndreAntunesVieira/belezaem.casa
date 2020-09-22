@@ -45,7 +45,7 @@ export default class BaseController implements IBaseController {
     return this.reply.code(status)
   }
   public code(status) {
-    return this.reply.code(status)
+    return this.reply.status(status)
   }
   public setHeader(name, value) {
     return this.reply.set(name, value)
