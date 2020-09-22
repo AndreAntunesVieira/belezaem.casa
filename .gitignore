@@ -35,4 +35,6 @@ yarn-error.log*
 
 # project
 .forever
+/.idea
 /dist
+/design
