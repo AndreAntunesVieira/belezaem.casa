@@ -16,6 +16,7 @@ export default class SchedulesController extends BaseController {
 
   async edit() {
     const data = await this.SchedulesDB.find(Number(this.routeParams.id))
+    console.log(data)
     data.date += `T${data.time}:00`
     delete data.time
     const user: any = await this.UserDB.findBySlug(this.body.user)
@@ -24,6 +25,7 @@ export default class SchedulesController extends BaseController {
     delete data.deleted_at
     delete data.updated_at
     data.user_id = user.id
+    console.log(data)
     return this.SchedulesDB.update(data)
   }
 
