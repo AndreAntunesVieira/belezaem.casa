@@ -22,6 +22,14 @@ export default class SchedulesDB extends ModelBase {
     return this.table.where({ id }).del()
   }
 
+  async find(id: number) {
+    return this.table.where({ id }).first()
+  }
+
+  async update(data) {
+    return this.table.where({ id: data.id }).update(data)
+  }
+
   async saveSchedule(data) {
     return this.table.insert(data)
   }

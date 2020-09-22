@@ -3,6 +3,7 @@ import Router from './vendor/Router'
 const routes = new Router()
 
 routes.post('schedules', 'SchedulesController.create')
+routes.put('schedules', 'SchedulesController.edit')
 routes.get('schedules/next', 'SchedulesController.next')
 routes.delete('schedules/:id', 'SchedulesController.delete')
 

@@ -14,6 +14,16 @@ export default class SchedulesController extends BaseController {
     return this.SchedulesDB.saveSchedule(data)
   }
 
+  async edit() {
+    const data = await this.SchedulesDB.find(Number(this.queryParams.id))
+    data.date += `T${data.time}:00`
+    delete data.time
+    const user: any = await this.UserDB.findBySlug(this.body.user)
+    delete data.user
+    data.user_id = user.id
+    return this.SchedulesDB.update(data)
+  }
+
   async next() {
     const schedules = await this.SchedulesDB.nextSchedules()
     this.setHeader('Cache-Control', 'no-cache')
