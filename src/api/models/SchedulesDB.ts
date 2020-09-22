@@ -19,7 +19,7 @@ export default class SchedulesDB extends ModelBase {
   }
 
   async delete(id: number) {
-    return this.table.where({ id }).delete()
+    return this.table.where({ id }).del()
   }
 
   async saveSchedule(data) {
