@@ -32,8 +32,16 @@ export default class SchedulesController extends BaseController {
   }
 
   async delete() {
-    await this.SchedulesDB.delete(Number(this.queryParams.id))
-    return { message: 'deleted' }
+    try{
+
+      await this.SchedulesDB.delete(Number(this.queryParams.id))
+      return { message: 'deleted' }
+    }
+    catch(e){
+      console.log(e)
+      this.code(400)
+      return { message: 'error' }
+    }
   }
 
   private joinSchedulesByDay(schedules) {
