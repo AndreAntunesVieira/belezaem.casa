@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import classNames from 'classnames'
 import styled from 'styled-components'
 import CreateScheduleModal from '../components/Modals/CreateScheduleModal'
 import Menu from './Menu'
@@ -9,20 +8,19 @@ import Notification from './Notification'
 import FullNotification from './FullNotification'
 import EditScheduleModal from './Modals/EditScheduleModal'
 
-export default function SignedSchedule({ onSignOut, user }) {
-  const [days, setDays] = useState([])
+export default function SignedCostumers({ onSignOut, user }) {
+  const [costumers, setCostumers] = useState([])
   const [addModal, setAddModal] = useState(false)
   const [editModal, setEditModal] = useState(null)
   const [fetching, setFetching] = useState(true)
   const [error, setError] = useState(false)
-  const openScheduleEditModal = schedule => {
+  const openCostumerEditModal = schedule => {
     setEditModal(schedule)
   }
   const updateSchedule = async () => {
     setFetching(true)
-    return request('schedules/next')
-      .then(parseDays)
-      .then(days => setDays(days))
+    return request('costumers')
+      .then(({ costumers }) => setCostumers(costumers))
       .catch(e => {
         setError(e.error)
       })
@@ -37,36 +35,20 @@ export default function SignedSchedule({ onSignOut, user }) {
   }
   return (
     <>
-      {days.map(({ day, weekDay, schedules }) => (
-        <Day key={day}>
-          <h3>
-            {day} ({weekDay})
-          </h3>
-          <div>
-            {schedules.map((schedule: any, key) => (
-              <Schedule
-                className={classNames(schedule.user, {
-                  ScheduleDone: schedule.done,
-                })}
-                key={key}
-                onClick={() => openScheduleEditModal(schedule)}>
-                <small>
-                  {schedule.user} - {schedule.hour}
-                </small>
-                <h4>{schedule.title}</h4>
-                <div>Cliente: {schedule.client}</div>
-              </Schedule>
-            ))}
-          </div>
-        </Day>
-      ))}
+      <div>
+        {costumers.map((costumer: any, key) => (
+          <Schedule key={key} onClick={() => openCostumerEditModal(costumer)}>
+            <h4>Nome: {costumer.name}</h4>
+            <div>Aniversário: <b>{parseDateBr(costumer.birthDate)}</b></div>
+            <div>Cadastrada(o) em: <b>{parseDatetimeBr(costumer.createdAt)}</b></div>
+            <div>Telefone: <b>{costumer.phone}</b></div>
+          </Schedule>
+        ))}
+      </div>
       {fetching ? (
-        <FullNotification className="ColorBlue P16">Carregando novos atendimentos...</FullNotification>
+        <FullNotification className="ColorBlue P16">Carregando clientes...</FullNotification>
       ) : (
-        <>
-          {days.length === 0 && <Notification className="ColorRed P16">Não há atendimentos previstos</Notification>}
-          {error && <Notification className="ColorRed P16">{error}</Notification>}
-        </>
+        <>{error && <Notification className="ColorRed P16">{error}</Notification>}</>
       )}
       {addModal && (
         <CreateScheduleModal
@@ -86,27 +68,25 @@ export default function SignedSchedule({ onSignOut, user }) {
       )}
       <Menu>
         <A href="/">Voltar</A>
-        <div className="MainMenuItem" onClick={() => openScheduleModal()}>
-          Marcar atendimento
-        </div>
-        <A href="/clientes">
+        <A href="/agenda"  >Marcar atendimento</A>
+        <div onClick={() => openScheduleModal()}className="MainMenuItem">
           Clientes
-        </A>
+        </div>
         <div onClick={() => onSignOut()}>Sair</div>
       </Menu>
     </>
   )
 }
 
-const parseDays = ({ days }) =>
-  days.map((day: any) => {
-    day.schedules.forEach(schedule => {
-      const datetime = new Date(schedule.date)
-      datetime.setMinutes(datetime.getMinutes() + datetime.getTimezoneOffset())
-      schedule.done = datetime < new Date()
-    })
-    return day
-  })
+function parseDateBr(date){
+  if(!date) return date
+  return date.replace(/(\d{4})-(\d{2})-(\d{2}).*/, '$3/$2/$1')
+}
+
+function parseDatetimeBr(date){
+  if(!date) return date
+  return date.replace(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}).*/, '$3/$2/$1 $4:$5')
+}
 
 const Schedule = styled.div`
   padding: 8px;

@@ -7,6 +7,8 @@ routes.get('schedules/next', 'SchedulesController.next')
 routes.put('schedules/:id', 'SchedulesController.edit')
 routes.delete('schedules/:id', 'SchedulesController.delete')
 
+routes.get('costumers', 'CostumersController.index')
+
 routes.get('testimonials', 'TestimonialsController.index')
 
 routes.post('users/sign-in', 'UsersController.signIn')

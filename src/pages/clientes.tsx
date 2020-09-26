@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import SignedSchedule from '../components/SignedSchedule'
+import SignedCostumers from '../components/SignedCostumers'
 import UnsignedSchedule from '../components/UnsignedSchedule'
 
-export default function Agenda() {
+export default function Clientes() {
   const [user, setUser] = useState(null)
   const [fetched, setFetched] = useState(false)
 
@@ -32,7 +32,7 @@ export default function Agenda() {
       <hr />
       {fetched && (
         <>
-          {user && <SignedSchedule onSignOut={onSignOut} user={user}/>}
+          {user && <SignedCostumers onSignOut={onSignOut} user={user}/>}
           {!user && <UnsignedSchedule onSignIn={onSignIn} />}
         </>
       )}
