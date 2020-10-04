@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import styled from 'styled-components'
 import A from './common/A'
 import Button from './Button'
 import Menu from './Menu'
@@ -33,7 +32,7 @@ export default function UnsignedSchedule({ onSignIn }) {
   return (
     <>
       Você precisa fazer login para continuar
-      <Form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="login-form">
         <div className="form-control">
           <input name="slug" placeholder="login" ref={slugInput} />
         </div>
@@ -46,20 +45,10 @@ export default function UnsignedSchedule({ onSignIn }) {
             Entrar
           </Button>
         </div>
-      </Form>
+      </form>
       <Menu>
         <A className="MainMenuItem" href="/">Voltar</A>
       </Menu>
     </>
   )
 }
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  margin-top: 60px;
-  padding: 16px;
-  width: 300px;
-`

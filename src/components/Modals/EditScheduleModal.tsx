@@ -1,7 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
 import Button from '../Button'
-import ModalBase from './ModalBase'
 import request from '../../helpers/Request'
 
 const saveSchedule = async (id, data) => {
@@ -38,7 +36,7 @@ const EditScheduleModal = ({ setActiveModal, updateSchedule, setFetching, schedu
     return data
   }
   return (
-    <Container onClick={_e => setActiveModal(false)}>
+    <div className="modal-base" onClick={_e => setActiveModal(false)}>
       <form onClick={e => e.stopPropagation()} onSubmit={onSchedule}>
         <h4>Marcar atendimento</h4>
 
@@ -77,18 +75,9 @@ const EditScheduleModal = ({ setActiveModal, updateSchedule, setFetching, schedu
           <Button className="btn-success">Salvar</Button>
         </div>
       </form>
-    </Container>
+    </div>
   )
 }
-
-const Container = styled(ModalBase)`
-  textarea {
-    min-height: 40px;
-  }
-  button {
-    align-self: flex-end;
-  }
-`
 
 export default EditScheduleModal
 

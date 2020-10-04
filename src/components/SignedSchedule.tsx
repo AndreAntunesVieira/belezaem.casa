@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import classNames from 'classnames'
-import styled from 'styled-components'
 import CreateScheduleModal from '../components/Modals/CreateScheduleModal'
 import Menu from './Menu'
 import A from './common/A'
@@ -38,14 +37,14 @@ export default function SignedSchedule({ onSignOut, user }) {
   return (
     <>
       {days.map(({ day, weekDay, schedules }) => (
-        <Day key={day}>
+        <div className="schedule-day" key={day}>
           <h3>
             {day} ({weekDay})
           </h3>
           <div>
             {schedules.map((schedule: any, key) => (
-              <Schedule
-                className={classNames(schedule.user, {
+              <div
+                className={classNames('schedule', schedule.user, {
                   ScheduleDone: schedule.done,
                 })}
                 key={key}
@@ -55,10 +54,10 @@ export default function SignedSchedule({ onSignOut, user }) {
                 </small>
                 <h4>{schedule.title}</h4>
                 <div>Cliente: {schedule.client}</div>
-              </Schedule>
+              </div>
             ))}
           </div>
-        </Day>
+        </div>
       ))}
       {fetching ? (
         <FullNotification className="ColorBlue P16">Carregando novos atendimentos...</FullNotification>
@@ -107,46 +106,3 @@ const parseDays = ({ days }) =>
     })
     return day
   })
-
-const Schedule = styled.div`
-  padding: 8px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  &.gaby {
-    background-color: rgba(255, 0, 255, 0.31);
-  }
-  &.thay {
-    background-color: rgba(255, 255, 0, 0.31);
-  }
-  &:first-child {
-    border-top: 2px solid rgba(0, 0, 0, 0.6);
-  }
-  &:last-child {
-    border-bottom: 2px solid rgba(0, 0, 0, 0.6);
-    margin-bottom: 32px;
-  }
-  &.ScheduleDone {
-    opacity: 0.4;
-    position: relative;
-    &:before {
-      position: absolute;
-      top: 4px;
-      right: 4px;
-      content: 'Em antendimento ou já passou';
-      color: red;
-      display: block;
-      border: 1px solid red;
-      border-radius: 4px;
-      padding: 4px;
-      font-size: 0.7em;
-    }
-  }
-`
-
-const Day = styled.div`
-  margin-bottom: 16px;
-  width: 100%;
-  small {
-    color: rgba(0, 0, 0, 0.6);
-    text-transform: capitalize;
-  }
-`
