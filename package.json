@@ -18,33 +18,7 @@
     "migrate:make": "knex migrate:make",
     "deploy": "now --prod"
   },
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "classnames": "^2.2.6",
-    "cross-env": "^7.0.2",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "husky": "^4.2.5",
-    "knex": "^0.21.0",
-    "next": "^9.3.5",
-    "node-fetch": "^2.6.1",
-    "pg": "^8.0.3",
-    "pg-connection-string": "^2.2.0",
-    "prismic-dom": "^2.2.3",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "styled-components": "^5.1.0",
-    "typescript": "^3.8.3",
-    "universal-fetch": "^1.0.0"
-  },
   "devDependencies": {
-    "@types/node": "^13.13.0",
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.8",
-    "@types/styled-components": "^5.1.0",
-    "babel-plugin-styled-components": "^1.10.7",
-    "nodemon": "^2.0.4",
-    "prettier": "^2.0.4",
-    "ts-node": "^8.10.2"
+    "prettier": "^2.0.4"
   }
 }

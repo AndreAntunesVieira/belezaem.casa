@@ -1,8 +1,0 @@
-{
-  "regions": ["gru1"],
-  "public": true,
-
-  "github": {
-    "enabled": true
-  }
-}
