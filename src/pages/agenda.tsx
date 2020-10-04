@@ -25,7 +25,7 @@ export default function Agenda() {
   }, [])
 
   return (
-    <Container>
+    <div className="container-internal">
       <h1>
         <img src="/logo/icon.png" alt="logo beleza em casa" /> Agenda
       </h1>
@@ -36,35 +36,6 @@ export default function Agenda() {
           {!user && <UnsignedSchedule onSignIn={onSignIn} />}
         </>
       )}
-    </Container>
+    </div>
   )
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  h4 {
-    margin-top: 0;
-    margin-bottom: 8px;
-  }
-  h1 {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-    border-bottom: 1px solid #999;
-    width: 100%;
-    padding-bottom: 8px;
-    > img {
-      height: 68px;
-      margin-right: 16px;
-    }
-  }
-  h3 {
-    margin: 0 0 16px 0;
-    padding-left: 8px;
-  }
-`

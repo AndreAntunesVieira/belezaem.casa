@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Presentation from '../components/Presentation'
 import About from '../components/About'
 import Gallery from '../components/Gallery'
