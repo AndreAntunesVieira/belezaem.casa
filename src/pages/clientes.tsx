@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SignedCostumers from '../components/SignedCostumers'
 import UnsignedSchedule from '../components/UnsignedSchedule'
+import ContainerInternal from '../components/common/ContainerInternal'
 
 export default function Clientes() {
   const [user, setUser] = useState(null)
@@ -24,17 +25,13 @@ export default function Clientes() {
   }, [])
 
   return (
-    <div className="container-internal">
-      <h1>
-        <img src="/logo/icon.png" alt="logo beleza em casa" /> Agenda
-      </h1>
-      <hr />
+    <ContainerInternal>
       {fetched && (
         <>
-          {user && <SignedCostumers onSignOut={onSignOut} user={user}/>}
+          {user && <SignedCostumers onSignOut={onSignOut} user={user} />}
           {!user && <UnsignedSchedule onSignIn={onSignIn} />}
         </>
       )}
-    </div>
+    </ContainerInternal>
   )
 }

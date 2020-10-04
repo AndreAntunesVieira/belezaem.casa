@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import SignedSchedule from '../components/SignedSchedule'
 import UnsignedSchedule from '../components/UnsignedSchedule'
+import ContainerInternal from '../components/common/ContainerInternal'
 
 export default function Agenda() {
   const [user, setUser] = useState(null)
@@ -25,17 +25,13 @@ export default function Agenda() {
   }, [])
 
   return (
-    <div className="container-internal">
-      <h1>
-        <img src="/logo/icon.png" alt="logo beleza em casa" /> Agenda
-      </h1>
-      <hr />
+    <ContainerInternal>
       {fetched && (
         <>
           {user && <SignedSchedule onSignOut={onSignOut} user={user}/>}
           {!user && <UnsignedSchedule onSignIn={onSignIn} />}
         </>
       )}
-    </div>
+    </ContainerInternal>
   )
 }

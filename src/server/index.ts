@@ -12,6 +12,7 @@ const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
   server.use(bodyParser())
+  server.use(express.static('public'))
 
   vendorMiddleware(server)
 
