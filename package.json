@@ -19,6 +19,7 @@
     "deploy": "now --prod"
   },
   "devDependencies": {
-    "prettier": "^2.0.4"
+    "prettier": "^2.0.4",
+    "sass": "^1.26.11"
   }
 }
