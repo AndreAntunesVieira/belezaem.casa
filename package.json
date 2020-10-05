@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "next build && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node dist/src/server/index.js",
+    "start": "node dist/src/server/index.js",
     "lint": "prettier --write 'src/**/*.{t,j}s'",
     "lint:check": "prettier -l 'src/**/*.{t,j}s'",
     "update-cache": "node bin/scripts/update-cache.js",
@@ -21,7 +21,6 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "classnames": "^2.2.6",
-    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "husky": "^4.2.5",
