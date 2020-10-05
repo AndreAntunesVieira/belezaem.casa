@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'belezaem.casa-1601844503669'
+const CACHE_NAME = 'belezaem.casa-1601896746439'
 const pageUrls = ["/","/agenda"]
 const staticAssets = ["/styles.css","/logo-white-50.png","/whatsapp.png","/fotos/w65xrjq.jpg","/fotos/boca.jpg"]
 const networkOnlyUrls = []

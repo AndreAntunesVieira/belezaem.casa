@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.png" />
         <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
-        <link rel="stylesheet" type="text/css" href="/style.css" />
+        <link rel="stylesheet" type="text/css" href="/style2.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" async defer />
         <meta property="og:url" content="https://belezaem.casa/" />
         <meta property="og:site_name" content="Beleza em casa" />
